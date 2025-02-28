@@ -1,0 +1,12 @@
+set -g mode-keys emacs
+set -g status-keys emacs
+
+# Enable mouse support
+set -g mouse on
+
+# Automatically copy to clipboard on selection (Wayland)
+bind-key -T copy-mode MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "wl-copy"
+
+# Copy to clipboard (wayland)
+bind-key -T copy-mode Enter send-keys -X copy-pipe-and-cancel "wl-copy"
+bind -n C-k clear-history
