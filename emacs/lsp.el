@@ -15,3 +15,6 @@
 ;; pylsp must be provided by the virtual environment
 (add-to-list 'eglot-server-programs '((python-mode) "pylsp"))
 (add-hook 'python-mode-hook 'eglot-ensure)
+
+;; Language modes
+(require 'rust-mode)
