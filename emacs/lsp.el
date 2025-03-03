@@ -11,3 +11,7 @@
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs '((odin-mode) . ("/home/nosferatu/ThirdParty/ols/ols"))))
 (add-hook 'odin-mode-hook #'eglot-ensure)
+
+;; pylsp must be provided by the virtual environment
+(add-to-list 'eglot-server-programs '((python-mode) "pylsp"))
+(add-hook 'python-mode-hook 'eglot-ensure)

@@ -11,4 +11,5 @@ set -U fish_user_paths \
 	$HOME/ThirdParty/zig-linux-x86_64-0.14.0 \
 	$HOME/ThirdParty/odin-linux-amd64-dev-2025-02 \
 	$HOME/ThirdParty/ols \
+	$HOME/ThirdParty/focus/focus \
 	$HOME/.cargo/env

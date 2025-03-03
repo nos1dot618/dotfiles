@@ -16,7 +16,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
-font pango:Hack 10
+font pango:Fira Mono 10
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -31,7 +31,7 @@ for_window [floating] resize set 900 700
 bindsym $mod+x [floating] resize set 900 700
 	
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -41,7 +41,7 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu_run -fn 'pango:Hack 10'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu_run -fn 'pango:Fira Mono 10'"
 
 # change focus
 bindsym $mod+j focus left
@@ -75,8 +75,8 @@ bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 # PULSE AUDIO OVER
 
 # BRIGHTNESS START
-bindsym XF86MonBrightnessDown exec sudo brightnessctl --min-val=2 -q set 3%-
-bindsym XF86MonBrightnessUp exec sudo brightnessctl -q set 3%+
+bindsym XF86MonBrightnessDown exec "sudo brightnessctl --min-val=2 -q set 3%-"
+bindsym XF86MonBrightnessUp exec "sudo brightnessctl -q set 3%+"
 # BRIGHTNESS OVER
 
 # WALLPAPER START
@@ -99,10 +99,9 @@ bindsym --release $mod+Print exec gnome-screenshot -i # interactive screenshot
 # CUSTOM KEY BINDINGS START
 bindsym --release $mod+comma exec --no-startup-id env XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose
 bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
-bindsym --release $mod+m exec --no-startup-id pcmanfm
-bindsym --release $mod+c exec --no-startup-id chromium --new-tab --profile-directory="Default"
+bindsym --release $mod+m exec --no-startup-id nautilus 
+bindsym --release $mod+c exec --no-startup-id thorium-browser tab --profile-directory="Default"
 bindsym --release $mod+y exec --no-startup-id emacs
-bindsym --release $mod+p exec --no-startup-id whatsapp-web
 # CUSTOM KEY BINDINGS OVER
 
 # split in horizontal orientation

@@ -3,6 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
  '(custom-enabled-themes '(tsdh-dark-improved))
  '(custom-safe-themes
@@ -13,8 +17,9 @@
  '(indent-tabs-mode t)
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(darcula-theme zenburn-theme scala-mode dockerfile-mode yaml-mode solarized-theme powershell glsl-mode cmake-mode go-mode kaolin-themes haskell-mode markdown-mode multiple-cursors smex rust-mode use-package))
+   '(company darcula-theme zenburn-theme scala-mode dockerfile-mode yaml-mode solarized-theme powershell glsl-mode cmake-mode go-mode kaolin-themes haskell-mode markdown-mode multiple-cursors smex rust-mode use-package))
  '(resize-mini-windows 'grow-only)
+ '(show-paren-mode t)
  '(standard-indent 4)
  '(tool-bar-mode nil))
 (custom-set-faces

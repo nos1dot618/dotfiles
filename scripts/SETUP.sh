@@ -20,6 +20,8 @@ ln -s -f $ROOT/Makefile                           ~/Makefile
 ln    -f $ROOT/emacs/custom.el                    ~/.emacs.custom.el
 ln    -f $ROOT/emacs/lsp.el                       ~/.emacs.lsp.el
 # Sudo commands
-sudo ln    -f $ROOT/emacs/theme.el                /usr/share/emacs/$EMACS_VERSION/etc/themes/wombat-theme.el
+sudo ln    -f $ROOT/emacs/theme.el                 /usr/share/emacs/$EMACS_VERSION/etc/themes/wombat-theme.el
+sudo ln -s -f $ROOT/xorg.conf.d/90-touchpad.conf   /etc/X11/xorg.conf.d/90-touchpad.conf
+sudo ln -s -f $ROOT/scripts/moonmoon               /usr/bin/moonmoon
 
 bash $ROOT/emacs/SETUP.sh
