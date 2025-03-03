@@ -26,4 +26,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -e /home/nosferatu/.nix-profile/etc/profile.d/nix.sh ]; then . /home/nosferatu/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export GTK_THEME=Pop-dark
+export GDK_DARK_THEME=1

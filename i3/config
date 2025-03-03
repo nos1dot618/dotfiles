@@ -91,6 +91,15 @@ exec --no-startup-id nm-applet
 exec --no-startup-id libinput-gestures-setup start
 # GESTURES OVER
 
+# COPYQ START
+# Clipboard manager
+exec --no-startup-id copyq
+# COPYQ OVER
+
+# GESTURES START
+exec --no-startup-id libinput-gestures-setup start
+# GESTURES OVER
+	
 # PRINT SCREEN START
 bindsym --release Print exec gnome-screenshot -a # capture area
 bindsym --release $mod+Print exec gnome-screenshot -i # interactive screenshot
@@ -102,7 +111,11 @@ bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
 bindsym --release $mod+m exec --no-startup-id nautilus 
 bindsym --release $mod+c exec --no-startup-id thorium-browser tab --profile-directory="Default"
 bindsym --release $mod+y exec --no-startup-id emacs
+bindsym --release $mod+Shift+v exec --no-startup-id "copyq show"
 # CUSTOM KEY BINDINGS OVER
+
+# Launch Applications in floating mode
+for_window [class="copyq"] floating enable
 
 # split in horizontal orientation
 bindsym $mod+h split h
