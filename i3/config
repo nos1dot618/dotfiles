@@ -48,8 +48,6 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -60,62 +58,53 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# PULSE AUDIO START
+# 'pulseaudio' amixer audio controls
 exec --no-startup-id pulseaudio
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"	
-# PULSE AUDIO OVER
 
-# BRIGHTNESS START
+# 'playerctl' media controls
+# Reference: https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html
+bindsym XF86AudioPlay exec "playerctl play"
+bindsym XF86AudioPause exec "playerctl pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
+
+# 'brightnessctl'
 bindsym XF86MonBrightnessDown exec "sudo brightnessctl --min-val=2 -q set 3%-"
 bindsym XF86MonBrightnessUp exec "sudo brightnessctl -q set 3%+"
-# BRIGHTNESS OVER
 
-# WALLPAPER START
+# 'nitrogen' wallpaper controls
 exec --no-startup-id nitrogen --restore
-# WALLPAPER OVER
 
-# APPLETS START
+# applets
 exec --no-startup-id nm-applet
-# APPLETS OVER
 
-# GESTURES START
+# 'libinput-gestures' touchpad gestures
+# Reference: https://github.com/bulletmark/libinput-gestures
 exec --no-startup-id libinput-gestures-setup start
-# GESTURES OVER
 
-# COPYQ START
-# Clipboard manager
+# 'copyq' clipboard manager
 exec --no-startup-id copyq
-# COPYQ OVER
+for_window [class="copyq"] floating enable
 
-# GESTURES START
-exec --no-startup-id libinput-gestures-setup start
-# GESTURES OVER
-	
-# PRINT SCREEN START
+# 'gnome-screenshot': screenshot service
 bindsym --release Print exec gnome-screenshot -a # capture area
 bindsym --release $mod+Print exec gnome-screenshot -i # interactive screenshot
-# PRINT SCREEN OVER
 			
-# CUSTOM KEY BINDINGS START
-bindsym --release $mod+comma exec --no-startup-id env XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose
-bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
-bindsym --release $mod+m exec --no-startup-id nautilus 
-bindsym --release $mod+c exec --no-startup-id thorium-browser tab --profile-directory="Default"
-bindsym --release $mod+y exec --no-startup-id emacs
+# custom key bindings
+bindsym --release $mod+comma exec --no-startup-id "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose"
+bindsym --release $mod+Shift+o exec "gnome-screensaver-command --lock "
+bindsym --release $mod+m exec --no-startup-id "nautilus"
+bindsym --release $mod+c exec --no-startup-id "thorium-browser --profile-directory='Default'"
+bindsym --release $mod+y exec --no-startup-id "emacs"
 bindsym --release $mod+Shift+v exec --no-startup-id "copyq show"
-# CUSTOM KEY BINDINGS OVER
-
-# Launch Applications in floating mode
-for_window [class="copyq"] floating enable
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -141,7 +130,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
