@@ -100,7 +100,7 @@ bindsym --release $mod+Print exec gnome-screenshot -i # interactive screenshot
 			
 # custom key bindings
 bindsym --release $mod+comma exec --no-startup-id "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose"
-bindsym --release $mod+Shift+o exec "gnome-screensaver-command --lock "
+bindsym --release $mod+Shift+o exec "i3lock"
 bindsym --release $mod+m exec --no-startup-id "nautilus"
 bindsym --release $mod+c exec --no-startup-id "thorium-browser --profile-directory='Default'"
 bindsym --release $mod+y exec --no-startup-id "emacs"
