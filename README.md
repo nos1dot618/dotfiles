@@ -11,7 +11,7 @@
 
 ### Getting Started
 ```bash
-git clone https://github.com/hyouteki/dotfiles
+git clone ssh://git@gitlab.com:/ninthcircle/dotfiles
 cd dotfiles
 bash scripts/SETUP.sh
 ```

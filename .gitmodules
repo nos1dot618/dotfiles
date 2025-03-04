@@ -1,5 +1,3 @@
 [submodule "emacs/scripts"]
 	path = emacs/scripts
-	url = ssh://git@codeberg.org:/ninthcircle/elsc.git
-[submodule "emacs/scripts/"]
-	url = ssh://git@codeberg.org:/ninthcircle/elsc.git
+	url = https://gitlab.com/ninthcircle/elsc.git
