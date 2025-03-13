@@ -71,8 +71,7 @@ bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # 'playerctl' media controls
 # Reference: https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html
-bindsym XF86AudioPlay exec "playerctl play"
-bindsym XF86AudioPause exec "playerctl pause"
+bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 

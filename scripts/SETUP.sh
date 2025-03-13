@@ -7,7 +7,7 @@ if [ -z $ROOT ]; then
     echo "ROOT not set, defaulting to: ${ROOT}"
 fi
 
-EMACS_VERSION=27.1
+EMACS_VERSION=30.1
 
 ln -s -f $ROOT/i3/config                          ~/.config/i3/config
 ln -s -f $ROOT/i3status/config                    ~/.config/i3status/config
