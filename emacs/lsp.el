@@ -50,6 +50,25 @@
   (add-to-list 'eglot-server-programs '(clojurescript-mode . ("clojure-lsp")))
   (add-to-list 'eglot-server-programs '(clojurex-mode . ("clojure-lsp"))))
 
+;; dfmt
+(defun my-d-format-func ()
+  "Format the current D buffer using dfmt"
+  (interactive)
+  (let ((pos (point)))
+	(shell-command-on-region (point-min) (point-max)
+							 (concat "/home/nosferatu/ThirdParty/dfmt/bin/dfmt"
+									 " --indent_size=2"
+									 " --brace_style=otbs"
+									 " --indent_style=space"
+									 " --max_line_length=80")
+							 t t)
+    (goto-char (point-min))
+    (while (re-search-forward "^stdin.*\\[error\\]:.*\n" nil t)
+      (replace-match ""))
+	(goto-char pos)))
+;; d-mode
+(add-hook 'd-mode-hook (lambda () (local-set-key (kbd "M-RET") #'my-d-format-func)))
+
 ;; java-mode
 (add-hook 'java-mode-hook
           (lambda ()
