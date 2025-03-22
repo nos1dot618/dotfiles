@@ -14,4 +14,5 @@ set -U fish_user_paths \
 	$HOME/ThirdParty/ols \
 	$HOME/ThirdParty/focus/focus \
 	$HOME/.cargo/env \
-	$HOME/ThirdParty/jdk-23.0.2/bin
+	$HOME/ThirdParty/jdk-23.0.2/bin \
+	$HOME/ThirdParty/gradle-8.13/bin
