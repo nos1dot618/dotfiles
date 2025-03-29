@@ -1,4 +1,13 @@
+;; eglot
 (require 'eglot)
+(setq eglot-report-progress nil)
+
+;; lsp-mode
+(require 'lsp-mode)
+(setq lsp-headerline-breadcrumb-enable nil)
+
+;; lsp-java
+(add-hook 'java-mode-hook #'lsp)
 
 ;; clangd
 (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
@@ -14,7 +23,7 @@
 ;; pylsp must be provided by the virtual environment
 ;; pip install 'python-lsp-server[all]'
 (add-to-list 'eglot-server-programs '((python-mode) "pylsp"))
-(add-hook 'python-mode-hook 'eglot-ensure)
+(add-hook 'python-mode-hook #'eglot-ensure)
 
 ;; rust-mode
 (require 'rust-mode)
@@ -63,7 +72,7 @@
 									 " --max_line_length=80")
 							 t t)
     (goto-char (point-min))
-    (while (re-search-forward "^stdin.*\\[error\\]:.*\n" nil t)
+    (while (re-search-forward "^stdin.*\\[\\(?:error\\|warn\\)\\]:.*\n" nil t)
       (replace-match ""))
 	(goto-char pos)))
 ;; d-mode
@@ -83,5 +92,11 @@
             (setq groovy-indent-offset 2)
             (setq indent-tabs-mode nil)))
 
-;; Key bindings only for the terminal mode
-(global-set-key (kbd "M-RET") 'eglot-format)
+;; Calls lsp-format-buffer when in java-mode,
+;; and calls eglot-format everywhere else
+(global-set-key (kbd "M-RET")
+                (lambda ()
+                  (interactive)
+                  (if (eq major-mode 'java-mode)
+                      (call-interactively 'lsp-format-buffer)
+                    (call-interactively 'eglot-format))))
