@@ -32,7 +32,7 @@
 (load custom-file)
 
 ;; Fullscreen-mode default
-;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Displaying line number in relative mode
 ;; Reference: https://stackoverflow.com/a/54392862/22342267

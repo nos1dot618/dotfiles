@@ -15,4 +15,7 @@ set -U fish_user_paths \
 	$HOME/ThirdParty/focus/focus \
 	$HOME/.cargo/env \
 	$HOME/ThirdParty/jdk-23.0.2/bin \
-	$HOME/ThirdParty/gradle-8.13/bin
+	$HOME/ThirdParty/gradle-8.13/bin \
+	$HOME/ThirdParty/idea-IC-243.26053.27/bin \
+	$HOME/ThirdParty/serve-d/ \
+	$HOME/ThirdParty/fasm/

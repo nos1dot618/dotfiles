@@ -31,7 +31,7 @@ for_window [floating] resize set 900 700
 bindsym $mod+x [floating] resize set 900 700
 	
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+q kill

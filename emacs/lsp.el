@@ -69,7 +69,8 @@
 									 " --indent_size=2"
 									 " --brace_style=otbs"
 									 " --indent_style=space"
-									 " --max_line_length=80")
+									 " --max_line_length=80"
+									 " --soft_max_line_length=60")
 							 t t)
     (goto-char (point-min))
     (while (re-search-forward "^stdin.*\\[\\(?:error\\|warn\\)\\]:.*\n" nil t)
