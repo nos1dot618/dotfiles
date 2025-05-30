@@ -1,3 +1,0 @@
-[submodule "emacs/scripts"]
-	path = emacs/scripts
-	url = https://gitlab.com/ninthcircle/elsc.git
