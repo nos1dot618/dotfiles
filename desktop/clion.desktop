@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Jetbrains CLion IDE
+Comment=The Jetbrains CLion IDE
+Exec=/home/nosferatu/ThirdParty/clion-2025.1.1/bin/clion
+Icon=/home/nosferatu/ThirdParty/clion-2025.1.1/bin/clion.png
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true

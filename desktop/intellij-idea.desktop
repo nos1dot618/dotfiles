@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=IntelliJ IDEA Community
+Comment=The IntelliJ IDEA IDE Community Edition
+Exec=/home/nosferatu/ThirdParty/idea-IC-251.25410.129/bin/idea
+Icon=/home/nosferatu/ThirdParty/idea-IC-251.25410.129/bin/idea.png
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
