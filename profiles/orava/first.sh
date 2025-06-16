@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -xeu
 
-bash "$PROFILE/third_party_install.sh"
+bash "$DOTFILES_ROOT/profiles/orava/third_party_install.sh"
