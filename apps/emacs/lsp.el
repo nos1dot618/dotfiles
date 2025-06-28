@@ -1,6 +1,9 @@
 (dolist (pkg '(;; major-modes
                nix-mode
                markdown-mode
+               clojure-mode
+               powershell
+               haskell-mode
                ;; lsp related packages
                eglot
                company

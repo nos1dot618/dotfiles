@@ -40,9 +40,18 @@
   (eval `(use-package ,pkg :defer t)))
 
 ;; Load other emacs configuration files
-(setq default-directory "~/")
-(load-file (expand-file-name "~/.config/emacs/lsp.el"))
-(setq custom-file (expand-file-name "~/.config/emacs/custom.el"))
+(cond
+ ((eq system-type 'windows-nt)
+  ;; Windows configuration
+  (setq default-directory (getenv "USERPROFILE"))
+  (defvar my-config-dir (expand-file-name "win-config/apps/emacs/" (getenv "USERPROFILE")))
+  (load-file (expand-file-name "lsp.el" my-config-dir))
+  (setq custom-file (expand-file-name "custom.el" my-config-dir)))
+ ((eq system-type 'gnu/linux)
+  ;; Linux configuration
+  (setq default-directory "~/")
+  (load-file (expand-file-name "~/.config/emacs/lsp.el"))
+  (setq custom-file (expand-file-name "~/.config/emacs/custom.el"))))
 (when (file-exists-p custom-file)
   (load custom-file))
 
@@ -75,12 +84,17 @@
 (global-set-key (kbd "C-,") 'duplicate-line)
 
 ;; Redirect backups to ~/.config/emacs/backup
-(setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
-      backup-by-copying      t  ; Don't de-link hard links
-      version-control        t  ; Use version numbers on backups
-      delete-old-versions    t  ; Automatically delete excess backups:
-      kept-new-versions      20 ; how many of the newest versions to keep
-      kept-old-versions      5) ; and how many of the old
+(setq backup-directory-alist
+      `(("." . ,(cond
+                 ((eq system-type 'windows-nt)
+                  (expand-file-name "~/.emacs.d/backup"))
+                 ((eq system-type 'gnu/linux)
+                  (expand-file-name "~/.config/emacs/backup")))))
+      backup-by-copying      t   ; Don't de-link hard links
+      version-control        t   ; Use version numbers on backups
+      delete-old-versions    t   ; Automatically delete excess backups
+      kept-new-versions      20  ; How many of the newest versions to keep
+      kept-old-versions      5)  ; And how many of the old
 
 (put 'downcase-region 'disabled nil)
 
