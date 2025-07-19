@@ -11,7 +11,8 @@
  '(haskell-interactive-popup-errors nil)
  '(package-selected-packages
    '(clojure-mode company haskell-mode markdown-mode multiple-cursors
-                  nix-mode powershell smex zenburn-theme)))
+                  nix-mode powershell smex typescript-mode
+                  zenburn-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

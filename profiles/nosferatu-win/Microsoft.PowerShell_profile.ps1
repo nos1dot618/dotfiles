@@ -2,6 +2,8 @@ $AddPaths = @(
     "$env:USERPROFILE\ThirdParty\emacs-30.1\bin"
     "$env:USERPROFILE\ThirdParty\focus"
     "$env:USERPROFILE\ThirdParty\openjdk-24.0.1_windows-x64_bin\jdk-24.0.1\bin"
+    "$env:USERPROFILE\ThirdParty\nasm-2.16.03"
+    "$env:USERPROFILE\ThirdParty\ideaIC-2025.1.3.win\bin"
 )
 
 $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")

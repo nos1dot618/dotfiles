@@ -44,7 +44,7 @@
  ((eq system-type 'windows-nt)
   ;; Windows configuration
   (setq default-directory (getenv "USERPROFILE"))
-  (defvar my-config-dir (expand-file-name "win-config/apps/emacs/" (getenv "USERPROFILE")))
+  (defvar my-config-dir (expand-file-name "dotfiles/apps/emacs/" (getenv "USERPROFILE")))
   (load-file (expand-file-name "lsp.el" my-config-dir))
   (setq custom-file (expand-file-name "custom.el" my-config-dir)))
  ((eq system-type 'gnu/linux)
