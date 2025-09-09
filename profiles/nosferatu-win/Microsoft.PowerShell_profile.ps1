@@ -4,6 +4,7 @@ $AddPaths = @(
     "$env:USERPROFILE\ThirdParty\openjdk-24.0.1_windows-x64_bin\jdk-24.0.1\bin"
     "$env:USERPROFILE\ThirdParty\nasm-2.16.03"
     "$env:USERPROFILE\ThirdParty\ideaIC-2025.1.3.win\bin"
+    "$env:USERPROFILE\ThirdParty\DB.Browser.for.SQLite-v3.13.1-win64"
 )
 
 $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")

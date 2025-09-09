@@ -2,3 +2,19 @@ Host gitlab.com
   HostName gitlab.com
   User git
   IdentityFile ~/Keys/gitlab/gitlab_id_ed25519
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/Keys/github/id_ed25519
+
+Host gitea-vm
+  HostName 35.212.157.239
+  User ninthcircle
+  IdentityFile ~/Keys/gitea-vm/id_ed25519
+
+Host gitea.9th.fun
+  HostName 35.212.157.239
+  User git
+  IdentityFile ~/Keys/gitea/id_ed25519
+  Port 2222
