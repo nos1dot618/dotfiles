@@ -18,3 +18,7 @@ Host gitea.9th.fun
   User git
   IdentityFile ~/Keys/gitea/id_ed25519
   Port 2222
+
+Host debian
+  HostName 192.168.0.106
+  User nosferatu
