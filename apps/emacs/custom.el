@@ -4,7 +4,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(zenburn))
+ '(custom-enabled-themes '(wombat))
  '(custom-safe-themes
    '("09b833239444ac3230f591e35e3c28a4d78f1556b107bafe0eb32b5977204d93"
      default))
