@@ -5,6 +5,7 @@ $AddPaths = @(
     "$env:USERPROFILE\ThirdParty\nasm-2.16.03"
     "$env:USERPROFILE\ThirdParty\ideaIC-2025.1.3.win\bin"
     "$env:USERPROFILE\ThirdParty\DB.Browser.for.SQLite-v3.13.1-win64"
+    "$env:USERPROFILE\ThirdParty\rclone-v1.71.2-windows-amd64"
 )
 
 $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")
