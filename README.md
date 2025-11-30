@@ -7,8 +7,6 @@
 For GNU/Linux:
 
 ```bash
-git clone ssh://git@gitlab.com:/ninthcircle/dotfiles
-cd dotfiles
 # Do not run these scripts with elevated privileges
 bash first.sh
 bash setup.sh
@@ -17,8 +15,6 @@ bash setup.sh
 For Windows:
 
 ```ps1
-git clone ssh://git@gitlab.com:/ninthcircle/dotfiles
-cd dotfiles
 & first.ps1 # Requires chocolatey
 & setup.ps1
 ```
