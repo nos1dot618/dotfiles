@@ -6,7 +6,7 @@ Host gitlab.com
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/Keys/github/id_ed25519
+  IdentityFile ~/Keys/github/github_id_ed25519
 
 Host gitea-vm
   HostName 35.212.157.239
