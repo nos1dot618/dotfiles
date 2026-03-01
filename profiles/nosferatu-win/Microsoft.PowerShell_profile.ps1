@@ -10,10 +10,20 @@ $AddPaths = @(
     "$env:USERPROFILE\Thirdparty\typst\"
     "$env:USERPROFILE\Thirdparty\microsoft-terminal\"
     "$env:USERPROFILE\Thirdparty\clion-2025.2\bin\mingw\bin\"
+    "$env:USERPROFILE\Thirdparty\node-packages\node_modules\.bin\"
+    "$env:USERPROFILE\Thirdparty\go-1.26.0\bin\"
+    "$env:USERPROFILE\Thirdparty\go-1.26.0\third-party\bin\"
 )
 
 $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")
 
+function Prompt {
+    $CurrentPath = $PWD.Path.Replace([Environment]::GetFolderPath("UserProfile"), "~")
+    if ($CurrentPath -eq "~") {
+        $CurrentPath = "~\"
+    }
+    return "$([char]27)[36m$CurrentPath>$([char]27)[0m "
+}
 
 function Log {
     param (
@@ -49,7 +59,6 @@ function Info {
     Log -Level "INFO" -Color Blue -Message $Message
 }
 
-
 foreach ($Path in $AddPaths) {
     if ($env:PATH -notlike "*$Path*") {
         Info -Message "Adding '$Path' to Session PATH."
@@ -64,6 +73,7 @@ foreach ($Path in $AddPaths) {
 # Set environment variables
 [Environment]::SetEnvironmentVariable("PATH", $CurrentUserPath, "User")
 [Environment]::SetEnvironmentVariable("JAVA_HOME", "$env:USERPROFILE\Thirdparty\openjdk-24.0.1\", "User")
+[Environment]::SetEnvironmentVariable("GOPATH", "$env:USERPROFILE\Thirdparty\go-1.26.0\third-party\", "User")
 
 # Aliases
 Set-Alias ghc "ghc-9.8.2.exe"
