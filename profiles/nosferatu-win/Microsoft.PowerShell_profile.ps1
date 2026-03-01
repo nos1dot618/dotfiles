@@ -18,11 +18,58 @@ $AddPaths = @(
 $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")
 
 function Prompt {
-    $CurrentPath = $PWD.Path.Replace([Environment]::GetFolderPath("UserProfile"), "~")
+    $Esc = [char]27
+    $Cyan = "$Esc[36m"
+    $Yellow = "$Esc[33m"
+    $Red = "$Esc[31m"
+    $Green = "$Esc[32m"
+    $Reset = "$Esc[0m"
+
+    $UserHome = [Environment]::GetFolderPath("UserProfile")
+    $CurrentPath = $PWD.Path.Replace($UserHome, "~")
     if ($CurrentPath -eq "~") {
         $CurrentPath = "~\"
     }
-    return "$([char]27)[36m$CurrentPath>$([char]27)[0m "
+
+    $GitInfo = ""
+
+    git rev-parse --is-inside-work-tree 2>$null | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        $Branch = git branch --show-current
+
+        # Try to get configured upstream first
+        $Upstream = git rev-parse --abbrev-ref --symbolic-full-name "@{u}" 2>$null
+        if (-not $Upstream) {
+            # Fallback: assume origin/<same-name> if it exists
+            git show-ref --verify --quiet "refs/remotes/origin/$Branch"
+            if ($LASTEXITCODE -eq 0) {
+                $Upstream = "origin/$Branch"
+            }
+        }
+
+        if (git status --porcelain 2>$null) {
+            $GitInfo += "$Red*"
+        }
+
+        $GitInfo += "$Yellow$Branch$Reset $(git rev-parse --short HEAD)"
+
+        if ($Upstream) {
+            $AheadBehind = git rev-list --left-right --count "$Branch...$Upstream"
+            $AheadCount, $BehindCount = $AheadBehind -split '\s+'
+
+            if ($AheadCount -ne 0) {
+                $GitInfo += " $Green+$AheadCount"
+            }
+            if ($BehindCount -ne 0) {
+                $GitInfo += " $Red-$BehindCount"
+            }
+            $GitInfo += "$Reset"
+        }
+
+        $GitInfo = " ($GitInfo)"
+    }
+
+    return "$Cyan$CurrentPath$Reset$GitInfo`n> "
 }
 
 function Log {
