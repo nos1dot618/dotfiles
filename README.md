@@ -15,6 +15,6 @@ bash setup.sh
 For Windows:
 
 ```ps1
-& first.ps1 # Requires chocolatey
-& setup.ps1
+& First.ps1 # Requires chocolatey
+& Setup.ps1
 ```

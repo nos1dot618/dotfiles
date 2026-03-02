@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 # Install apps usig chocolatey package manager
-$ChocolateyPackagesFile = (Join-Path $env:DOTFILES_PROFILE "chocolatey_packages.list")
+$ChocolateyPackagesFile = (Join-Path $env:DOTFILES_PROFILE "ChocolateyPackages.list")
 Get-Content $ChocolateyPackagesFile | ForEach-Object {
     $PackageName = $_.Trim()
     if (-not [string]::IsNullOrWhiteSpace($PackageName)) {
