@@ -1,5 +1,5 @@
 . (Join-Path $env:DOTFILES_ROOT "Common.ps1")
-. Source-Script (Join-Path $env:DOTFILES_PROFILE "Prompt.ps1")
+. Source-Script (Join-Path $env:DOTFILES_ROOT "apps\powershell\Prompt.ps1")
 
 $AddPaths = @(
     "$env:USERPROFILE\Thirdparty\emacs-30.1\bin\"
@@ -31,11 +31,11 @@ foreach ($Path in $AddPaths) {
     }
 }
 
-# Set environment variables
+# Set environment variables.
 [Environment]::SetEnvironmentVariable("PATH", $CurrentUserPath, "User")
 [Environment]::SetEnvironmentVariable("JAVA_HOME", "$env:USERPROFILE\Thirdparty\openjdk-24.0.1\", "User")
 [Environment]::SetEnvironmentVariable("GOPATH", "$env:USERPROFILE\Thirdparty\go-1.26.0\third-party\", "User")
 
-# Aliases
+# Aliases.
 Set-Alias ghc "ghc-9.8.2.exe"
 Set-Alias gti git # For typos ;)
