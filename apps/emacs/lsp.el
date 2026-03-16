@@ -4,6 +4,7 @@
                clojure-mode
                powershell
                haskell-mode
+               go-mode
                ;; lsp related packages
                eglot
                company
@@ -25,6 +26,12 @@
 (add-hook 'c-mode-hook #'company-mode)
 (add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'c++-mode-hook #'company-mode)
+
+;; gopls for go-mod
+;; go install golang.org/x/tools/gopls@latest
+(add-to-list 'eglot-server-programs '((go-mode) "gopls"))
+(add-hook 'go-mode-hook #'eglot-ensure)
+(add-hook 'go-mode-hook #'company-mode)
 
 ;; Custom Key bindings
 ;; Calls lsp-format-buffer when in java-mode,
