@@ -27,7 +27,7 @@
 (setq resize-mini-windows t)
 
 ;; Indentation settings
-(setq-default indent-tabs-mode nil)
+(setq indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default c-basic-offset 2)
 
@@ -119,3 +119,49 @@
 	    (global-set-key (kbd "C-c >") 'mc/mark-next-like-this)
 	    (global-set-key (kbd "C-c <") 'mc/mark-previous-like-this)
 	    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)))
+
+;; Reference: https://www.emacswiki.org/emacs/basic-edit-toolkit.el
+(defun move-text-internal (arg)
+  "Move region (transient-mark-mode active) or current line."
+  (let ((remember-point (point)))
+    ;; Can't get correct effect of `transpose-lines'
+    ;; when `point-max' is not at beginning of line
+    ;; So fix this bug.
+    (goto-char (point-max))
+    (if (not (bolp)) (newline))         ;add newline to fix
+    (goto-char remember-point)
+    ;; logic code start
+    (cond ((and mark-active transient-mark-mode)
+           (if (> (point) (mark))
+               (exchange-point-and-mark))
+           (let ((column (current-column))
+                 (text (delete-and-extract-region (point) (mark))))
+             (forward-line arg)
+             (move-to-column column t)
+             (set-mark (point))
+             (insert text)
+             (exchange-point-and-mark)
+             (setq deactivate-mark nil)))
+          (t
+           (let ((column (current-column)))
+             (beginning-of-line)
+             (when (or (> arg 0) (not (bobp)))
+               (forward-line 1)
+               (when (or (< arg 0) (not (eobp)))
+                 (transpose-lines arg))
+               (forward-line -1))
+             (move-to-column column t))
+           ))))
+
+(defun move-text-up (arg)
+  "Move region (transient-mark-mode active) or current line ARG lines up."
+  (interactive "*p")
+  (move-text-internal (- arg)))
+
+(defun move-text-down (arg)
+  "Move region (transient-mar-mode active) or current line (ARG lines) down."
+  (interactive "*p")
+  (move-text-internal arg))
+
+(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "M-<up>") 'move-text-up)
