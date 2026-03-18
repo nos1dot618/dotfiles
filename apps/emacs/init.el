@@ -55,6 +55,12 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; Add to path
+(cond
+ ((eq system-type 'windows-nt)
+  (add-to-list 'exec-path "C:/Program Files/Git/bin")
+  (add-to-list 'exec-path "C:/Program Files/Git/usr/bin")))
+
 ;; Displaying line number in relative mode
 ;; Reference: https://stackoverflow.com/a/54392862/22342267
 (global-display-line-numbers-mode 1)
