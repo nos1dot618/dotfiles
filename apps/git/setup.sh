@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-set -xeu
-
-: "${MY_HOME:?ERROR: MY_HOME environment-variable is not set.}"
+set -eu
+source "$DOTFILES_ROOT/apps/bash/commons.sh"
 
 # Set global username and email
 git config --global user.name "ninthcircle"
 git config --global user.email "mainlakshayhoon@gmail.com"
+log_note "Set up Git user details."
+
 # Set SSH as the signing format
 git config --global gpg.format ssh
 # Set the signing key
@@ -14,21 +15,22 @@ chmod 600 "$MY_HOME/Keys/gitlab/gitlab_id_ed25519"
 chmod 600 "$MY_HOME/Keys/github/github_id_ed25519"
 # Enable commit signing by default
 git config --global commit.gpgSign true
+log_note "Set up Git signing keys."
+
 # Set the default branch name for new repositories
 git config --global init.defaultBranch master
-# Remove existing aliases before adding new
-git config --global --remove-section alias 2>/dev/null || true
+log_note "Set Git default branch to master."
+
 # Remember the merge resolution and reuse when needed.
 git config --global rerere.enabled true
+
 # Enable column UI in git.
 git config --global column.ui auto
+
+# Remove existing aliases before adding new
+git config --global --remove-section alias 2>/dev/null || true
 # Aliases
-git config --global alias.s "status"
-git config --global alias.amend "commit --amend --no-edit"
-git config --global alias.tmp "commit -m 'Fly me to the moon'"
-git config --global alias.l "log --oneline -n 10"
-git config --global alias.p "push origin HEAD"
-git config --global alias.pf "push origin HEAD --force-with-lease"
-git config --global alias.q "checkout"
-git config --global alias.cp "cherry-pick"
-git config --global alias.b "branch"
+bash "$DOTFILES_ROOT/apps/git/Aliases.sh"
+log_note "Set up Git aliases."
+
+log_info "Set up Git successfully."

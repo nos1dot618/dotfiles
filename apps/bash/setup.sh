@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -xeu
+set -eu
+source "$DOTFILES_ROOT/apps/bash/commons.sh"
 
-ln -sf "$DOTFILES_ROOT/apps/bash/config.sh" "$MY_HOME/.bashrc"
-ln -sf "$DOTFILES_ROOT/apps/bash/profile.sh" "$MY_HOME/.profile"
+create_symlink "$DOTFILES_ROOT/apps/bash/config.sh" "$MY_HOME/.bashrc"
+create_symlink "$DOTFILES_ROOT/apps/bash/profile.sh" "$MY_HOME/.profile"
+
+log_info "Set up Bash successfully."

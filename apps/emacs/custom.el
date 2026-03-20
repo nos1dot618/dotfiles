@@ -6,14 +6,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(zenburn))
  '(custom-safe-themes
-   '("972f792651d32b0506481b9e87b2fbc9b732ae9da2527562668c6e7d149fefda"
-     "09b833239444ac3230f591e35e3c28a4d78f1556b107bafe0eb32b5977204d93"
-     default))
+	 '("972f792651d32b0506481b9e87b2fbc9b732ae9da2527562668c6e7d149fefda"
+		 "09b833239444ac3230f591e35e3c28a4d78f1556b107bafe0eb32b5977204d93"
+		 default))
  '(haskell-interactive-popup-errors nil)
- '(package-selected-packages
-   '(clojure-mode company go-mode haskell-mode markdown-mode
-                  multiple-cursors nix-mode powershell smex
-                  typescript-mode zenburn-theme)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

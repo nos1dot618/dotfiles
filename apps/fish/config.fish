@@ -5,6 +5,7 @@ end
 alias cls clear
 alias gti git # For typos ;)
 
+# TODO: Add a list of paths.
 set -gx PATH \
     $HOME/ThirdParty/fasm \
     $PATH
