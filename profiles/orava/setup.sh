@@ -13,7 +13,7 @@ log_info "Hostname set to \"$HOSTNAME\"."
 
 sudo -E bash "$DOTFILES_ROOT/profiles/orava/install.sh"
 
-# bash "$DOTFILES_ROOT/desktop/setup.sh"
+bash "$DOTFILES_ROOT/desktop/setup.sh"
 
 bash "$DOTFILES_ROOT/apps/bash/setup.sh"
 bash "$DOTFILES_ROOT/apps/emacs/setup.sh"
