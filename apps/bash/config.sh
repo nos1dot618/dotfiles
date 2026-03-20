@@ -116,3 +116,15 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Add to PATH environment variable.
+while IFS= read -r path; do
+    eval "expanded_path=\"$path\""
+
+    case ":$PATH:" in
+        *":$expanded_path:"*) ;; # Skip if already exists.
+        *) PATH="$expanded_path:$PATH" ;;
+    esac
+done < $HOME/.config/path.txt
+
+export PATH

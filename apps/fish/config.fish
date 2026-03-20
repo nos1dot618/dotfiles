@@ -2,13 +2,14 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Add aliases to a common file.
 alias cls clear
 alias gti git # For typos ;)
 
-# TODO: Add a list of paths.
-set -gx PATH \
-    $HOME/ThirdParty/fasm \
-    $PATH
+for path in (cat $HOME/.config/path.txt)
+    set expanded (eval echo $path)
+    fish_add_path $expanded
+end
 
 function vpn-on
     set current_mode (

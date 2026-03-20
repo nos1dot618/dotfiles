@@ -2,6 +2,8 @@
 set -eu
 source "$DOTFILES_ROOT/apps/bash/commons.sh"
 
+create_symlink "$DOTFILES_ROOT/profiles/orava/path.txt" "$MY_HOME/.config/path.txt"
+
 sudo apt-get update > /dev/null 2>&1
 log_info "Updated apt package list."
 
