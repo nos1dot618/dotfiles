@@ -1,4 +1,9 @@
-$HOME/bin
-$HOME/.local/bin
-$HOME/ThirdParty/fasm
+/bin/
+/usr/bin/
+/usr/local/bin/
+/usr/local/games/
+/usr/games/
+$HOME/bin/
+$HOME/.local/bin/
+$HOME/ThirdParty/fasm/
 $HOME/ThirdParty/clion-2025.3.3/bin/
