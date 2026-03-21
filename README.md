@@ -1,4 +1,4 @@
-> My GNU/Linux and Windows configuration. Find my NixOS configuration here <https://gitlab.com/ninthcircle/nix-config>.
+> My GNU/Linux and Windows configuration. Find my NixOS configuration here <https://github.com/nos1dot618/nix-config>.
 
 ---
 
