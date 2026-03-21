@@ -27,7 +27,7 @@
 (setq resize-mini-windows t)
 
 ;; Indentation settings
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default c-basic-offset 2)
 

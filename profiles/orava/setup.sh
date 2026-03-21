@@ -4,8 +4,8 @@ source "$DOTFILES_ROOT/apps/bash/commons.sh"
 
 create_symlink "$DOTFILES_ROOT/profiles/orava/path.txt" "$MY_HOME/.config/path.txt"
 
+log_info "Updating apt package list."
 sudo apt-get update > /dev/null 2>&1
-log_info "Updated apt package list."
 
 HOSTNAME="orava"
 sudo hostnamectl set-hostname "$HOSTNAME"
@@ -23,3 +23,5 @@ bash "$DOTFILES_ROOT/apps/ssh/setup.sh"
 bash "$DOTFILES_ROOT/apps/cloudflare-warp/setup.sh"
 
 bash "$DOTFILES_ROOT/fonts/setup.sh"
+
+log_info "Set up profile \"Orave\" successfully."

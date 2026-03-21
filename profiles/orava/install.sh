@@ -3,32 +3,35 @@ set -eu
 source "$DOTFILES_ROOT/apps/bash/commons.sh"
 
 PACKAGES=(
-		# Base
-		git
-		tmux
-		fish
+    # Base.
+    git
+    tmux
+    fish
 
-		# C++
-		clangd
-		cmake
-		clang
-		libstdc++-12-dev
+    # C++.
+    clangd
+    cmake
+    clang
+    libstdc++-12-dev
+
+    # Python.
+    python3-pip
+    pipx
 )
 
-install_packages() {
-		for package in "$@"; do
-				install_package "$package"
-		done
-}
+PIPX_PACKAGES=()
 
-install_packages "${PACKAGES[@]}"
+install_package "${PACKAGES[@]}"
 
 # Python
 if apt-cache show python3.12-venv > /dev/null 2>&1; then
-		install_packages python3.12 python3.12-venv
+    install_package python3.12 python3.12-venv
 else
-		log_warn "Python 3.12 is not available, falling back to Python 3.11."
-		install_packages python3.11 python3.11-venv
+    log_warn "Python 3.12 is not available, falling back to Python 3.11."
+    install_package python3.11 python3.11-venv
 fi
+
+setup_pipx
+install_pipx_package "${PIPX_PACKAGES[@]}"
 
 log_info "Packages installed successfully."
