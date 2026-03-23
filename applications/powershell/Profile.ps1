@@ -1,5 +1,5 @@
 . (Join-Path $env:DOTFILES_ROOT "Common.ps1")
-. Source-Script (Join-Path $env:DOTFILES_ROOT "apps\powershell\Prompt.ps1")
+. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Prompt.ps1")
 
 $AddPaths = @(
     "$env:USERPROFILE\Thirdparty\emacs-30.1\bin\"

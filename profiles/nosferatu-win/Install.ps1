@@ -1,7 +1,7 @@
 ﻿# This must be executed with Adminstrator Priviledges
 $ErrorActionPreference = "Stop"
 
-# Install apps usig chocolatey package manager
+# Install applications usig chocolatey package manager
 $ChocolateyPackagesFile = (Join-Path $env:DOTFILES_PROFILE "ChocolateyPackages.list")
 Get-Content $ChocolateyPackagesFile | ForEach-Object {
     $PackageName = $_.Trim()

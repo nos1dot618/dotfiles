@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eu
-source "$DOTFILES_ROOT/apps/bash/commons.sh"
+source "$DOTFILES_ROOT/applications/bash/commons.sh"
 
 create_symlink "$DOTFILES_ROOT/profiles/orava/path.txt" "$MY_HOME/.config/path.txt"
 
@@ -15,12 +15,12 @@ sudo -E bash "$DOTFILES_ROOT/profiles/orava/install.sh"
 
 bash "$DOTFILES_ROOT/desktop/setup.sh"
 
-bash "$DOTFILES_ROOT/apps/bash/setup.sh"
-bash "$DOTFILES_ROOT/apps/emacs/setup.sh"
-bash "$DOTFILES_ROOT/apps/fish/setup.sh"
-bash "$DOTFILES_ROOT/apps/git/setup.sh"
-bash "$DOTFILES_ROOT/apps/ssh/setup.sh"
-bash "$DOTFILES_ROOT/apps/cloudflare-warp/setup.sh"
+bash "$DOTFILES_ROOT/applications/bash/setup.sh"
+bash "$DOTFILES_ROOT/applications/emacs/setup.sh"
+bash "$DOTFILES_ROOT/applications/fish/setup.sh"
+bash "$DOTFILES_ROOT/applications/git/setup.sh"
+bash "$DOTFILES_ROOT/applications/ssh/setup.sh"
+bash "$DOTFILES_ROOT/applications/cloudflare-warp/setup.sh"
 
 bash "$DOTFILES_ROOT/fonts/setup.sh"
 

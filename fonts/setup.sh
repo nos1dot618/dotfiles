@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eu
-source "$DOTFILES_ROOT/apps/bash/commons.sh"
+source "$DOTFILES_ROOT/applications/bash/commons.sh"
 
 FONTS_DIR="$MY_HOME/.local/share/fonts"
 

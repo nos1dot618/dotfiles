@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eu
-source "$DOTFILES_ROOT/apps/bash/commons.sh"
+source "$DOTFILES_ROOT/applications/bash/commons.sh"
 
 # Build Emacs 30.1.
 if [ ! -x "/usr/local/bin/emacs" ]; then
@@ -32,8 +32,8 @@ fi
 # Delete these PATHs, s.t. emacs gives priority to "$MY_HOME/.config/emacs".
 rm -rf "$MY_HOME/.emacs" "$MY_HOME/.emacs.d"
 mkdir -p "$MY_HOME/.config/emacs"
-create_symlink "$DOTFILES_ROOT/apps/emacs/init.el" "$MY_HOME/.config/emacs/init.el"
-create_symlink "$DOTFILES_ROOT/apps/emacs/custom.el" "$MY_HOME/.config/emacs/custom.el"
-create_symlink "$DOTFILES_ROOT/apps/emacs/lsp.el" "$MY_HOME/.config/emacs/lsp.el"
+create_symlink "$DOTFILES_ROOT/applications/emacs/init.el" "$MY_HOME/.config/emacs/init.el"
+create_symlink "$DOTFILES_ROOT/applications/emacs/custom.el" "$MY_HOME/.config/emacs/custom.el"
+create_symlink "$DOTFILES_ROOT/applications/emacs/lsp.el" "$MY_HOME/.config/emacs/lsp.el"
 
 log_info "Set up Emacs successfully."

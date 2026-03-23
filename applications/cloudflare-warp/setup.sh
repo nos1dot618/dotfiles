@@ -1,6 +1,6 @@
 #!/usr/env/bin bash
 set -eu
-source "$DOTFILES_ROOT/apps/bash/commons.sh"
+source "$DOTFILES_ROOT/applications/bash/commons.sh"
 
 function setup_cloudflare_warp() {
     warp-cli registration new
