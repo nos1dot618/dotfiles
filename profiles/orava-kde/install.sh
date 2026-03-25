@@ -2,7 +2,10 @@
 set -eu
 source "$DOTFILES_ROOT/applications/bash/commons.sh"
 
-PACKAGES=()
+PACKAGES=(
+    # Used for sharing screen.
+    pipewire
+)
 
 PIPX_PACKAGES=(
     # KDE tools.
