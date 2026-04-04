@@ -33,6 +33,14 @@
 (add-hook 'go-mode-hook #'eglot-ensure)
 (add-hook 'go-mode-hook #'company-mode)
 
+;; hls for haskell-mod
+(add-to-list 'eglot-server-programs
+             '((haskell-mode haskell-literate-mode) "haskell-language-server-wrapper"))
+(add-hook 'haskell-mode-hook #'eglot-ensure)
+(add-hook 'haskell-mode-hook #'company-mode)
+(setenv "PATH" (concat (getenv "PATH") ":/home/YOUR_USERNAME/.ghcup/bin"))
+(setq exec-path (append exec-path '("/home/YOUR_USERNAME/.ghcup/bin")))
+
 ;; Custom Key bindings
 ;; Calls lsp-format-buffer when in java-mode,
 ;; and calls eglot-format everywhere else

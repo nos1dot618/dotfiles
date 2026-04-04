@@ -7,3 +7,6 @@ $HOME/bin/
 $HOME/.local/bin/
 $HOME/ThirdParty/fasm/
 $HOME/ThirdParty/clion-2025.3.3/bin/
+$HOME/ThirdParty/typst/
+$HOME/.cabal/bin/
+$HOME/.ghcup/bin/

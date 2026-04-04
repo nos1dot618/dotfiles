@@ -28,3 +28,5 @@ fi
 
 export GTK_THEME=Pop-dark
 export GDK_DARK_THEME=1
+
+[ -f "/home/nosferatu/.ghcup/env" ] && . "/home/nosferatu/.ghcup/env" # ghcup-env

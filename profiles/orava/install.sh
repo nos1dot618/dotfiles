@@ -7,6 +7,7 @@ PACKAGES=(
     git
     tmux
     fish
+    tree
 
     # C++.
     clangd
