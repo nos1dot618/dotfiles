@@ -40,8 +40,9 @@
         "list": 
         [
             {
-                "backgroundImage": "%DOTFILES_ROOT%\\pictures\\wallpapers\\crystals.jpg",
+                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\stonehenge.jpg",
                 "backgroundImageOpacity": 0.2,
+                "colorScheme": "Dimidium",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "experimental.rainbowSuggestions": true,
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -60,6 +61,18 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{793f5de6-69e1-5318-9e78-37ac9a52e245}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{1ee955cf-a01c-56eb-abb1-72a39af3117f}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
