@@ -35,7 +35,8 @@
 
 ;; hls for haskell-mod
 (add-to-list 'eglot-server-programs
-             '((haskell-mode haskell-literate-mode) "haskell-language-server-wrapper"))
+             '((haskell-mode haskell-literate-mode)
+               . ("haskell-language-server-wrapper" "--lsp")))
 (add-hook 'haskell-mode-hook #'eglot-ensure)
 (add-hook 'haskell-mode-hook #'company-mode)
 (setenv "PATH" (concat (getenv "PATH") ":/home/YOUR_USERNAME/.ghcup/bin"))
@@ -50,3 +51,5 @@
                   (if (eq major-mode 'java-mode)
                       (call-interactively 'lsp-format-buffer)
                     (call-interactively 'eglot-format))))
+
+(global-set-key (kbd "C-c E") #'flymake-show-buffer-diagnostics)
