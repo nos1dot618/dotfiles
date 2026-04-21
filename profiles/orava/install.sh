@@ -8,6 +8,7 @@ PACKAGES=(
     tmux
     fish
     tree
+    feh
 
     # C++.
     clangd
