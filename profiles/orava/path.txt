@@ -10,3 +10,5 @@ $HOME/ThirdParty/clion-2025.3.3/bin/
 $HOME/ThirdParty/typst/
 $HOME/.cabal/bin/
 $HOME/.ghcup/bin/
+$HOME/ThirdParty/go/bin/
+$HOME/.local/go/bin/

@@ -11,6 +11,9 @@ for path in (cat $HOME/.config/path.txt)
     fish_add_path $expanded
 end
 
+# Evaluate environment variables defined inside .envrc.
+direnv hook fish | source
+
 function vpn-on
     set current_mode (
         warp-cli settings 2>/dev/null \

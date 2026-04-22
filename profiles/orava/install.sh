@@ -9,6 +9,7 @@ PACKAGES=(
     fish
     tree
     feh
+    direnv
 
     # C++.
     clangd

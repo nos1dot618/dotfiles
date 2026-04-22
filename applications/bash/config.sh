@@ -127,4 +127,7 @@ while IFS= read -r path; do
     esac
 done < $HOME/.config/path.txt
 
+# Evaluate environment variables defined inside .envrc.
+eval "$(direnv hook bash)"
+
 export PATH
