@@ -13,6 +13,7 @@ end
 
 # Evaluate environment variables defined inside .envrc.
 direnv hook fish | source
+direnv allow
 
 function vpn-on
     set current_mode (
