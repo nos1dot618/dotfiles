@@ -5,6 +5,7 @@
                powershell
                haskell-mode
                go-mode
+               d-mode
                ;; lsp related packages
                eglot
                company
@@ -27,13 +28,17 @@
 (add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'c++-mode-hook #'company-mode)
 
-;; gopls for go-mod
+;; gopls for go-mode
 ;; go install golang.org/x/tools/gopls@latest
 (add-to-list 'eglot-server-programs '((go-mode) "gopls"))
 (add-hook 'go-mode-hook #'eglot-ensure)
 (add-hook 'go-mode-hook #'company-mode)
 
-;; hls for haskell-mod
+;; serve-d for d-mode
+(add-to-list 'eglot-server-programs '((d-mode) "serve-d"))
+(add-hook 'd-mode-hook #'eglot-ensure)
+
+;; hls for haskell-mode
 (add-to-list 'eglot-server-programs
              '((haskell-mode haskell-literate-mode)
                . ("haskell-language-server-wrapper" "--lsp")))

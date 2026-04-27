@@ -12,9 +12,9 @@
      default))
  '(haskell-interactive-popup-errors nil)
  '(package-selected-packages
-   '(abyss-theme clojure-mode company go-mode haskell-mode markdown-mode
-                 multiple-cursors nix-mode powershell smex
-                 zenburn-theme)))
+   '(abyss-theme clojure-mode company d-mode go-mode haskell-mode
+                 markdown-mode multiple-cursors nix-mode powershell
+                 smex zenburn-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
