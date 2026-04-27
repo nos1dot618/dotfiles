@@ -38,6 +38,13 @@
 (add-to-list 'eglot-server-programs '((d-mode) "serve-d"))
 (add-hook 'd-mode-hook #'eglot-ensure)
 
+(defun my-d-style ()
+  ;; Fixes the bsd-style indentation for d-mode.
+  (c-set-offset 'substatement-open 0)
+  (c-set-offset 'statement-block-intro '+)
+  (c-set-offset 'block-close 0))
+(add-hook 'd-mode-hook #'my-d-style)
+
 ;; hls for haskell-mode
 (add-to-list 'eglot-server-programs
              '((haskell-mode haskell-literate-mode)
@@ -46,6 +53,9 @@
 (add-hook 'haskell-mode-hook #'company-mode)
 (setenv "PATH" (concat (getenv "PATH") ":/home/YOUR_USERNAME/.ghcup/bin"))
 (setq exec-path (append exec-path '("/home/YOUR_USERNAME/.ghcup/bin")))
+
+;; js-mode
+(setq js-indent-level 2)
 
 ;; Custom Key bindings
 ;; Calls lsp-format-buffer when in java-mode,

@@ -168,6 +168,8 @@
 (global-set-key (kbd "M-<down>") 'move-text-down)
 (global-set-key (kbd "M-<up>") 'move-text-up)
 
+(global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
+
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
