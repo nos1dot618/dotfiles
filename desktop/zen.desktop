@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Zen Browser
+Comment=The Zen Browser
+Exec=/home/nosferatu/ThirdParty/zen/zen
+Icon=/home/nosferatu/ThirdParty/zen/browser/chrome/icons/default/default128.png
+Terminal=false
+Categories=Internet;Browser;
+StartupNotify=true

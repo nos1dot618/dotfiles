@@ -12,3 +12,4 @@ $HOME/.cabal/bin/
 $HOME/.ghcup/bin/
 $HOME/ThirdParty/go/bin/
 $HOME/.local/go/bin/
+$HOME/ThirdParty/zen/

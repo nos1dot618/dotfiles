@@ -26,6 +26,7 @@ bash "$DOTFILES_ROOT/applications/git/setup.sh"
 bash "$DOTFILES_ROOT/applications/ssh/setup.sh"
 bash "$DOTFILES_ROOT/applications/cloudflare-warp/setup.sh"
 bash "$DOTFILES_ROOT/applications/dlang/setup.sh"
+bash "$DOTFILES_ROOT/applications/zen/setup.sh"
 
 bash "$DOTFILES_ROOT/fonts/setup.sh"
 
