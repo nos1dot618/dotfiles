@@ -6,6 +6,7 @@
                haskell-mode
                go-mode
                d-mode
+               fish-mode
                ;; lsp related packages
                eglot
                company

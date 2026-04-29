@@ -1,5 +1,5 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    # Commands to run in interactive sessions can go here.
 end
 
 # Add aliases to a common file.
@@ -17,7 +17,7 @@ direnv allow
 
 function vpn-on
     set current_mode (
-        warp-cli settings 2>/dev/null \
+    warp-cli settings 2>/dev/null \
         | string match -r '^Mode:.*' \
         | string replace 'Mode: ' ''
     )
@@ -33,4 +33,13 @@ function vpn-off
     curl -s "https://cloudflare.com/cdn-cgi/trace"
 end
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME; # ghcup-env
+function git-push
+    for remote in (git remote)
+        log_info "Pushing to remote \"$remote\"."
+        git push $remote $argv
+    end
+end
+
+# ghcup-env
+set -q GHCUP_INSTALL_BASE_PREFIX[1];
+or set GHCUP_INSTALL_BASE_PREFIX $HOME;

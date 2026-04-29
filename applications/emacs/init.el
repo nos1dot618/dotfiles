@@ -177,3 +177,7 @@
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (setq locale-coding-system 'utf-8)
+
+;; Display ruler for hard line wraps.
+(setq-default fill-column 80)
+(global-display-fill-column-indicator-mode 1)
