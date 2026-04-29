@@ -17,8 +17,6 @@ sudo -E bash "$DOTFILES_ROOT/profiles/orava/install.sh"
 direnv allow ~
 log_info "Set up environment variables management via \"direnv\"".
 
-bash "$DOTFILES_ROOT/desktop/setup.sh"
-
 bash "$DOTFILES_ROOT/applications/bash/setup.sh"
 bash "$DOTFILES_ROOT/applications/emacs/setup.sh"
 bash "$DOTFILES_ROOT/applications/fish/setup.sh"
@@ -27,6 +25,7 @@ bash "$DOTFILES_ROOT/applications/ssh/setup.sh"
 bash "$DOTFILES_ROOT/applications/cloudflare-warp/setup.sh"
 bash "$DOTFILES_ROOT/applications/dlang/setup.sh"
 bash "$DOTFILES_ROOT/applications/zen/setup.sh"
+bash "$DOTFILES_ROOT/applications/clion/setup.sh"
 
 bash "$DOTFILES_ROOT/fonts/setup.sh"
 
