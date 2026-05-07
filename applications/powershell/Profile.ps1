@@ -16,6 +16,7 @@ $AddPaths = @(
     "$env:USERPROFILE\Thirdparty\node-packages\node_modules\.bin\"
     "$env:USERPROFILE\Thirdparty\go-1.26.0\bin\"
     "$env:USERPROFILE\Thirdparty\go-1.26.0\third-party\bin\"
+    "$env:USERPROFILE\Thirdparty\serve-d_0.7.6\"
 )
 
 $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")

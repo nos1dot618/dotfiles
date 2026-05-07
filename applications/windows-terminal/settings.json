@@ -73,6 +73,39 @@
                 "hidden": true,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{d8398058-1f25-58b4-a4de-553766522cfe}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{5e76ea92-dc62-5be1-9aeb-fc498d9e99bb}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\stonehenge.jpg",
+                "backgroundImageOpacity": 0.2,
+                "closeOnExit": "automatic",
+                "colorScheme": "Dimidium",
+                "commandline": "ssh nosferatu@localhost -p 2222",
+                "cursorShape": "bar",
+                "experimental.rainbowSuggestions": true,
+                "guid": "{0fa6e2eb-c4b7-439b-99e1-fbbe50fc14bc}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "C:\\Users\\Nosferatu\\Pictures\\Icons\\debian_thirdparty.ico",
+                "name": "Debian",
+                "padding": "8, 8, 8, 8",
+                "showMarksOnScrollbar": true,
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
             }
         ]
     },
