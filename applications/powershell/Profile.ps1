@@ -62,3 +62,15 @@ if (Test-Path $AliasesFile) {
         Set-Alias $Alias $Command
     }
 }
+
+function Git-Push {
+    param(
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]]$Args
+    )
+
+    foreach ($Remote in (git remote)) {
+        Info -Message "Pushing to remote '$Remote'."
+        git push $Remote @Args
+    }
+}
