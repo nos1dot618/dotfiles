@@ -1,4 +1,4 @@
-> My GNU/Linux and Windows configuration. Find my NixOS configuration here <https://github.com/nos1dot618/nix-config>.
+> My GNU/Linux and Windows configuration. Find my NixOS configuration here <https://gitlab.com/ninthcircle/nix-config>.
 
 ---
 
@@ -15,6 +15,8 @@ bash setup.sh
 For Windows:
 
 ```ps1
-& First.ps1 # Requires chocolatey
+& First.ps1
 & Setup.ps1
 ```
+
+> Requires [Chocolatey](https://chocolatey.org/install) to be installed.
