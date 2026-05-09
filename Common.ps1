@@ -69,3 +69,23 @@ function Add-ToUserPath {
         $env:PATH = "$env:PATH;$PathToAdd"
     }
 }
+
+function Install-Package {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory, ParameterSetName = "Choco")]
+        [switch]$Choco,
+        [Parameter(Mandatory)]
+        [string]$Package
+    )
+
+    switch ($PSCmdlet.ParameterSetName) {
+        "Choco" { choco install $Package -y | Out-Null }
+    }
+
+    if ($?) {
+        Info -Message "Successfully installed package '$Package'."
+    } else {
+        Error -Message "Failed to install package '$Package'."
+    }
+}

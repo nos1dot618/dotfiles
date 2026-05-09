@@ -6,4 +6,3 @@ mkdir -p "$MY_HOME/.ssh"
 create_symlink "$DOTFILES_ROOT/applications/ssh/config" "$MY_HOME/.ssh/config"
 
 log_info "Set up SSH successfully."
-
