@@ -7,6 +7,7 @@
                go-mode
                d-mode
                fish-mode
+               zig-mode
                ;; lsp related packages
                eglot
                company

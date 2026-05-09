@@ -11,7 +11,7 @@ $InstallDir = Join-Path $ThirdPartyDir $DirName
 $Exe = Join-Path $InstallDir "notepad++.exe"
 
 if (-not (Test-Path $Exe)) {
-    Info -Message "Downloading 'Notepad++ $Version' binary."
+    Info -Message "Downloading 'Notepad++ $Version' portable archive."
     New-Item -ItemType Directory -Force -Path $DownloadDir | Out-Null
     New-Item -ItemType Directory -Force -Path $ThirdPartyDir | Out-Null
     Invoke-WebRequest -Uri $Url -OutFile $Dest

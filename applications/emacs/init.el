@@ -179,5 +179,5 @@
 (setq locale-coding-system 'utf-8)
 
 ;; Display ruler for hard line wraps.
-(setq-default fill-column 80)
+(setq-default fill-column 120)
 (global-display-fill-column-indicator-mode 1)
