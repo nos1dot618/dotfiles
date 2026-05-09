@@ -15,17 +15,26 @@ function Log {
         [Parameter(Mandatory)]
         [ConsoleColor]$Color,
         [Parameter(Mandatory)]
-        [string]$Message
+        [string[]]$Message
     )
+
+    if (-not $Message -or $Message.Count -eq 0) { return }
+
     Write-Host "[" -NoNewline
     Write-Host "$Level" -ForegroundColor $Color -NoNewline
-    Write-Host "] $Message"
+    Write-Host "] $($Message[0])"
+
+    $Indent = " " * "[$Level] ".Length
+    if ($Message.Count -le 1) { return }
+    foreach ($Line in $Message[1..($Message.Count - 1)]) {
+        Write-Host "$Indent$Line"
+    }
 }
 
 function Error {
     param (
         [Parameter(Mandatory)]
-        [string]$Message,
+        [string[]]$Message,
         [switch]$Exit
     )
     Log -Level "ERROR" -Color Red -Message $Message
@@ -37,8 +46,9 @@ function Error {
 function Info {
     param (
         [Parameter(Mandatory)]
-        [string]$Message
+        [string[]]$Message
     )
+
     Log -Level "INFO" -Color Blue -Message $Message
 }
 
@@ -50,7 +60,8 @@ function Source-Script {
     # `-PathType Leaf` ensures that the script is a file.
     if (Test-Path -Path $Script -PathType Leaf) {
         . $Script
-    } else {
+    }
+    else {
         Error -Message "Script '$Script' not found." -Exit
     }
 }
@@ -106,6 +117,6 @@ function Create-Symboliclink {
     )
 
     New-Item -ItemType SymbolicLink -Path $Destination -Target $Target -Force | Out-Null
-    if ($?) { Info -Message "Successfully created symlink '$Destination' -> '$Target'." }
+    if ($?) { Info -Message "Successfully created symlink", "from '$Destination'", "to '$Target'." }
     else { Error -Message "Failed to create symlink '$Destination' -> '$Target'." }
 }

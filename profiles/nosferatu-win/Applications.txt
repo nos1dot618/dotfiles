@@ -5,3 +5,4 @@ ssh
 windows-terminal
 notepad-plus-plus
 zig
+vscodium

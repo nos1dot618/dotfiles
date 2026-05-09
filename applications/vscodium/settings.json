@@ -1,0 +1,32 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.statusBar.visible": true,
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "editor.renderWhitespace": "none",
+  "workbench.layoutControl.enabled": false,
+  "editor.fontFamily": "Iosevka Term, Lucida Console, Consolas, 'Courier New', monospace",
+  "editor.mouseWheelZoom": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "djlint.showInstallError": false,
+  "window.autoDetectColorScheme": true,
+  "window.commandCenter": false,
+  "window.customMenuBarAltFocus": false,
+  "window.menuStyle": "native",
+  "window.titleBarStyle": "native",
+  "window.menuBarVisibility": "toggle",
+  "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "update.mode": "none",
+  "update.showReleaseNotes": false,
+  "powershell.integratedConsole.showOnStartup": false,
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2
+  }
+}
