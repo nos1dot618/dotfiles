@@ -20,5 +20,7 @@ Host gitea.9th.fun
   Port 2222
 
 Host debian
-  HostName 192.168.0.106
+  HostName localhost
   User nosferatu
+  IdentityFile ~/Keys/local/nosferatu-debian/id_ed25519
+  Port 2222
