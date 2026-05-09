@@ -47,12 +47,12 @@
   ;; Windows configuration
   (setq default-directory (getenv "USERPROFILE"))
   (defvar my-config-dir (expand-file-name "Dotfiles/applications/emacs/" (getenv "USERPROFILE")))
-  (load-file (expand-file-name "lsp.el" my-config-dir))
+  (load-file (expand-file-name "language.el" my-config-dir))
   (setq custom-file (expand-file-name "custom.el" my-config-dir)))
  ((eq system-type 'gnu/linux)
   ;; Linux configuration
   (setq default-directory "~/")
-  (load-file (expand-file-name "~/.config/emacs/lsp.el"))
+  (load-file (expand-file-name "~/.config/emacs/language.el"))
   (setq custom-file (expand-file-name "~/.config/emacs/custom.el"))))
 (when (file-exists-p custom-file)
   (load custom-file))
