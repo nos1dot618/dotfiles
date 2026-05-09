@@ -56,6 +56,11 @@
 (setenv "PATH" (concat (getenv "PATH") ":/home/YOUR_USERNAME/.ghcup/bin"))
 (setq exec-path (append exec-path '("/home/YOUR_USERNAME/.ghcup/bin")))
 
+;; zls for zig-mode
+(add-to-list 'eglot-server-programs '((zig-mode) "zls"))
+(add-hook 'zig-mode-hook #'eglot-ensure)
+(add-hook 'zig-mode-hook #'company-mode)
+
 ;; js-mode
 (setq js-indent-level 2)
 
