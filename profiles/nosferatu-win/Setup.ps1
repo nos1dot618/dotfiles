@@ -2,8 +2,12 @@ $ErrorActionPreference = "Stop"
 
 . (Join-Path $env:DOTFILES_ROOT "Common.ps1")
 
-. Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Setup.ps1")
-. Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\emacs\Setup.ps1")
-. Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\git\Setup.ps1")
-. Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\ssh\Setup.ps1")
-. Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\windows-terminal\Setup.ps1")
+$ApplicationsFile = Join-Path $env:DOTFILES_PROFILE "Applications.txt"
+if (Test-Path $ApplicationsFile) {
+    Get-Content $ApplicationsFile | ForEach-Object {
+        $Application = $_.Trim()
+        if ([string]::IsNullOrWhiteSpace($Application)) { return }
+        . Source-Script -Script (Join-Path $env:DOTFILES_ROOT `
+          "applications\$Application\Setup.ps1")
+    }
+}

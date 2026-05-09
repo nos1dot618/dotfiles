@@ -1,0 +1,6 @@
+powershell
+emacs
+git
+ssh
+windows-terminal
+notepad-plus-plus

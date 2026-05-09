@@ -4,24 +4,12 @@
 # Parsing %DOTFILES_PROFILE%\Paths.txt and updating PATH environment variable.
 $PathsFile = Join-Path $env:DOTFILES_PROFILE "Paths.txt"
 if (Test-Path $PathsFile) {
-    $CurrentUserPath = [Environment]::GetEnvironmentVariable("PATH", "User")
-
     Get-Content $PathsFile | ForEach-Object {
         $Path = $_.Trim()
         if ([string]::IsNullOrWhiteSpace($Path)) { return }
         $Path = [Environment]::ExpandEnvironmentVariables($Path)
-
-        if ($env:PATH -notlike "*$Path*") {
-            Info -Message "Adding '$Path' to Session PATH."
-            $env:PATH += ";$Path"
-        }
-        if ($CurrentUserPath -notlike "*$Path*") {
-            Info -Message "Adding '$Path' to Persistent User PATH."
-            $CurrentUserPath += ";$Path"
-        }
+        Add-ToUserPath -PathToAdd $Path
     }
-
-    [Environment]::SetEnvironmentVariable("PATH", $CurrentUserPath, "User")
 }
 
 # Parsing %DOTFILES_PROFILE%\Env.txt and setting environment variables.
@@ -71,6 +59,8 @@ function Git-Push {
 
     foreach ($Remote in (git remote)) {
         Info -Message "Pushing to remote '$Remote'."
-        git push $Remote @Args
+
+        if ($Args.Count -eq 0) { git push $Remote HEAD }
+        else { git push $Remote @Args }
     }
 }

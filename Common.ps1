@@ -54,3 +54,18 @@ function Source-Script {
         Error -Message "Script '$Script' not found." -Exit
     }
 }
+
+function Add-ToUserPath {
+    param(
+        [Parameter(Mandatory)]
+        [string]$PathToAdd
+    )    
+    $CurrentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
+    $PathEntries = $CurrentPath -split ';'
+    if ($PathEntries -notcontains $PathToAdd) {
+        Info -Message "Adding '$PathToAdd' to Session PATH."
+        $NewPath = ($CurrentPath.TrimEnd(';') + ";$PathToAdd").Trim(';')
+        [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
+        $env:PATH = "$env:PATH;$PathToAdd"
+    }
+}
