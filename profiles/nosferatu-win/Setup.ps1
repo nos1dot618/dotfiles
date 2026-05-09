@@ -16,5 +16,6 @@ if (Test-Path $ApplicationsFile) {
         if ([string]::IsNullOrWhiteSpace($Application)) { return }
         . Source-Script -Script (Join-Path $env:DOTFILES_ROOT `
           "applications\$Application\Setup.ps1")
+        Info -Message "Successfully installed application '$Application'."
     }
 }

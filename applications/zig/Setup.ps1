@@ -15,7 +15,7 @@ $InstallDir = Join-Path $ThirdPartyDir $DirName
 $Exe = Join-Path $InstallDir "zls.exe"
 
 if (-not (Test-Path $Exe)) {
-    Info -Message "Downloading 'zls (Zig Language Server) $Version' portable archive."
+    Info -Message "Downloading 'ZLS (Zig Language Server) $Version' portable archive."
     New-Item -ItemType Directory -Force -Path $DownloadDir | Out-Null
     New-Item -ItemType Directory -Force -Path $ThirdPartyDir | Out-Null
     Invoke-WebRequest -Uri $Url -OutFile $Dest
@@ -28,5 +28,3 @@ if (-not (Test-Path $Exe)) {
     Move-Item $ExtractedDir $ThirdPartyDir
     Remove-Item -Force $Dest
 }
-
-Info -Message "Successfully setup 'Zig' and 'ZLS'."

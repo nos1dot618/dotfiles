@@ -32,5 +32,3 @@ git config --global column.ui auto
 
 # Aliases.
 Get-Content (Join-Path $env:DOTFILES_ROOT "applications\git\Aliases.sh") | Invoke-Expression
-
-Info -Message "Successfully setup 'Git'."

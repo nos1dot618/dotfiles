@@ -24,5 +24,3 @@ if (-not (Test-Path $Exe)) {
     Move-Item $ExtractedDir $ThirdPartyDir
     Remove-Item -Force $Dest
 }
-
-Info -Message "Successfully setup 'Notepad++ $Version'."

@@ -56,7 +56,7 @@ function Source-Script {
 }
 
 function Add-ToUserPath {
-    param(
+    param (
         [Parameter(Mandatory)]
         [string]$PathToAdd
     )    
@@ -72,7 +72,7 @@ function Add-ToUserPath {
 
 function Install-Package {
     [CmdletBinding()]
-    param(
+    param (
         [Parameter(Mandatory, ParameterSetName = "Choco")]
         [switch]$Choco,
         [Parameter(Mandatory)]
@@ -83,9 +83,29 @@ function Install-Package {
         "Choco" { choco install $Package -y | Out-Null }
     }
 
-    if ($?) {
-        Info -Message "Successfully installed package '$Package'."
-    } else {
-        Error -Message "Failed to install package '$Package'."
-    }
+    if ($?) { Info -Message "Successfully installed package '$Package'." }
+    else { Error -Message "Failed to install package '$Package'." }
+}
+
+function Create-Directory {
+    param (
+        [Parameter(Mandatory)]
+        [string]$Path
+    )
+
+    New-Item -ItemType Directory -Path $Path -Force | Out-Null
+    if (-not $?) { Error -Message "Failed to create directory '$Path'." }
+}
+
+function Create-Symboliclink {
+    param (
+        [Parameter(Mandatory)]
+        [string]$Target,
+        [Parameter(Mandatory)]
+        [string]$Destination
+    )
+
+    New-Item -ItemType SymbolicLink -Path $Destination -Target $Target -Force | Out-Null
+    if ($?) { Info -Message "Successfully created symlink '$Destination' -> '$Target'." }
+    else { Error -Message "Failed to create symlink '$Destination' -> '$Target'." }
 }
