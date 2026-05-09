@@ -1,5 +1,6 @@
 . (Join-Path $env:DOTFILES_ROOT "Common.ps1")
 . Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Prompt.ps1")
+. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\git\Utils.ps1")
 
 # Parsing %DOTFILES_PROFILE%\Paths.txt and updating PATH environment variable.
 $PathsFile = Join-Path $env:DOTFILES_PROFILE "Paths.txt"
@@ -48,19 +49,5 @@ if (Test-Path $AliasesFile) {
         $Command = $Parts[1].Trim()
 
         Set-Alias $Alias $Command
-    }
-}
-
-function Git-Push {
-    param(
-        [Parameter(ValueFromRemainingArguments = $true)]
-        [string[]]$Args
-    )
-
-    foreach ($Remote in (git remote)) {
-        Info -Message "Pushing to remote '$Remote'."
-
-        if ($Args.Count -eq 0) { git push $Remote HEAD }
-        else { git push $Remote @Args }
     }
 }
