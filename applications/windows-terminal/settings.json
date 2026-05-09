@@ -93,7 +93,7 @@
                 "backgroundImageOpacity": 0.2,
                 "closeOnExit": "automatic",
                 "colorScheme": "Dimidium",
-                "commandline": "ssh nosferatu@localhost -p 2222",
+                "commandline": "ssh -i %USERPROFILE%\\Keys\\local\\nosferatu-debian\\id_ed25519 nosferatu@127.0.0.1 -p 2222",
                 "cursorShape": "bar",
                 "experimental.rainbowSuggestions": true,
                 "guid": "{0fa6e2eb-c4b7-439b-99e1-fbbe50fc14bc}",
