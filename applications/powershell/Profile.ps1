@@ -7,8 +7,7 @@ $PathsFile = Join-Path $env:DOTFILES_PROFILE "Paths.txt"
 if (Test-Path $PathsFile) {
     Get-Content $PathsFile | ForEach-Object {
         $Path = $_.Trim()
-        if ([string]::IsNullOrWhiteSpace($Path)) { return }
-        $Path = [Environment]::ExpandEnvironmentVariables($Path)
+        if ([string]::IsNullOrWhiteSpace($Path)) { continue }
         Add-ToUserPath -PathToAdd $Path
     }
 }
@@ -18,12 +17,10 @@ $EnvFile = Join-Path $env:DOTFILES_PROFILE "Env.txt"
 if (Test-Path $EnvFile) {
     Get-Content $EnvFile | ForEach-Object {
         $Line = $_.Trim()
-        if ([string]::IsNullOrWhiteSpace($Line) -or $Line.StartsWith("#")) {
-            return
-        }
+        if ([string]::IsNullOrWhiteSpace($Line) -or $Line.StartsWith("#")) { continue }
 
         $Parts = $Line -split "=", 2
-        if ($Parts.Count -ne 2) { return }
+        if ($Parts.Count -ne 2) { continue }
 
         $Key = $Parts[0].Trim()
         $Value = [Environment]::ExpandEnvironmentVariables($Parts[1].Trim())
@@ -38,12 +35,10 @@ $AliasesFile = Join-Path $env:DOTFILES_PROFILE "Aliases.txt"
 if (Test-Path $AliasesFile) {
     Get-Content $AliasesFile | ForEach-Object {
         $Line = $_.Trim()
-        if ([string]::IsNullOrWhiteSpace($Line) -or $Line.StartsWith("#")) {
-            return
-        }
+        if ([string]::IsNullOrWhiteSpace($Line) -or $Line.StartsWith("#")) { continue }
 
         $Parts = $Line -split "=", 2
-        if ($Parts.Count -ne 2) { return }
+        if ($Parts.Count -ne 2) { continue }
 
         $Alias = $Parts[0].Trim()
         $Command = $Parts[1].Trim()

@@ -52,6 +52,15 @@ function Info {
     Log -Level "INFO" -Color Blue -Message $Message
 }
 
+function Warn {
+    param (
+        [Parameter(Mandatory)]
+        [string[]]$Message
+    )
+
+    Log -Level "WARN" -Color Yellow -Message $Message
+}
+
 function Source-Script {
     param (
         [Parameter(Mandatory)]
@@ -70,14 +79,28 @@ function Add-ToUserPath {
     param (
         [Parameter(Mandatory)]
         [string]$PathToAdd
-    )    
+    )
+    $PathToAdd = [Environment]::ExpandEnvironmentVariables($PathToAdd)
+    $PathToAdd = $PathToAdd.TrimEnd("\").ToLowerInvariant() # Normalizing the path.
+    if (-not (Test-Path $PathToAdd)) {
+        Warn -Message "Path '$PathToAdd' does not exist, skipping adding it to the PATH."
+        return
+    }
+
     $CurrentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
-    $PathEntries = $CurrentPath -split ';'
+    if ([string]::IsNullOrWhiteSpace($CurrentPath)) { $PathEntries = @() }
+    else { $PathEntries = $CurrentPath -split ";" }
+    $PathEntries = $PathEntries | ForEach-Object { $_.TrimEnd('\').ToLowerInvariant() } # Normalizing the PATH entries.
+
     if ($PathEntries -notcontains $PathToAdd) {
-        Info -Message "Adding '$PathToAdd' to Session PATH."
-        $NewPath = ($CurrentPath.TrimEnd(';') + ";$PathToAdd").Trim(';')
+        Info -Message "Adding '$PathToAdd' to User PATH."
+        $NewPath = @($PathEntries + $PathToAdd) -join ';'
         [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
-        $env:PATH = "$env:PATH;$PathToAdd"
+    }
+
+    if (($env:PATH -split ';') -notcontains $PathToAdd) {
+        Info -Message "Adding '$PathToAdd' to Session PATH."
+        $env:PATH += ";$PathToAdd"
     }
 }
 
