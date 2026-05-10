@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eu
-source "$DOTFILES_ROOT/applications/bash/commons.sh"
+source "$DOTFILES_ROOT/commons/utils.sh"
 
 # Set global username and email
 git config --global user.name "ninthcircle"
@@ -32,5 +32,3 @@ git config --global --remove-section alias 2>/dev/null || true
 # Aliases
 bash "$DOTFILES_ROOT/applications/git/Aliases.sh"
 log_note "Set up Git aliases."
-
-log_info "Set up Git successfully."

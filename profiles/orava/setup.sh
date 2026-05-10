@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 set -eu
-source "$DOTFILES_ROOT/applications/bash/commons.sh"
+source "$DOTFILES_ROOT/commons/utils.sh"
 
 create_symlink "$DOTFILES_ROOT/profiles/orava/path.txt" "$MY_HOME/.config/path.txt"
 create_symlink "$DOTFILES_ROOT/profiles/orava/.envrc" "$MY_HOME/.envrc"
 
-log_info "Updating apt package list."
-sudo apt-get update > /dev/null 2>&1
+update_package_list
 
 HOSTNAME="orava"
 sudo hostnamectl set-hostname "$HOSTNAME"
@@ -17,15 +16,18 @@ sudo -E bash "$DOTFILES_ROOT/profiles/orava/install.sh"
 direnv allow ~
 log_info "Set up environment variables management via \"direnv\"".
 
-bash "$DOTFILES_ROOT/applications/bash/setup.sh"
-bash "$DOTFILES_ROOT/applications/emacs/setup.sh"
-bash "$DOTFILES_ROOT/applications/fish/setup.sh"
-bash "$DOTFILES_ROOT/applications/git/setup.sh"
-bash "$DOTFILES_ROOT/applications/ssh/setup.sh"
-bash "$DOTFILES_ROOT/applications/cloudflare-warp/setup.sh"
-bash "$DOTFILES_ROOT/applications/dlang/setup.sh"
-bash "$DOTFILES_ROOT/applications/zen/setup.sh"
-bash "$DOTFILES_ROOT/applications/clion/setup.sh"
+applications_file="$PROFILE/Applications.txt"
+if [[ -f "$applications_file" ]]; then
+    while IFS= read -r application || [[ -n "$application" ]]; do
+        application="$(echo "$application" | xargs)"
+
+        # Skip empty lines and comments
+        [[ -z "$application" || "$application" == \#* ]] && continue
+
+        bash "$DOTFILES_ROOT/applications/$application/setup.sh"
+        log_info "Successfully installed application '$application'."
+    done < "$applications_file"
+fi
 
 bash "$DOTFILES_ROOT/fonts/setup.sh"
 

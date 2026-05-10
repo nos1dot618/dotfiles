@@ -1,6 +1,6 @@
 #!/usr/env/bin bash
 set -eu
-source "$DOTFILES_ROOT/applications/bash/commons.sh"
+source "$DOTFILES_ROOT/commons/utils.sh"
 
 function setup_cloudflare_warp() {
     warp-cli registration new
@@ -21,5 +21,3 @@ https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | \
     install_package cloudflare-warp
     setup_cloudflare_warp
 fi
-
-log_info "Set up Cloudflare-Warp successfully."

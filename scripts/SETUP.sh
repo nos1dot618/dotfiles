@@ -1,5 +1,9 @@
 #!/bin/sh
 
+######################
+##### DEPRECATED #####
+######################
+
 # I know I can use GNU stow but fuck it we ball
 
 if [ -z $ROOT ]; then

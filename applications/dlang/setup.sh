@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eu
-source "$DOTFILES_ROOT/applications/bash/commons.sh"
+source "$DOTFILES_ROOT/commons/utils.sh"
 
 FILE="dmd_2.112.0-0_amd64.deb"
 URL="https://downloads.dlang.org/releases/2.x/2.112.0/${FILE}"
@@ -9,7 +9,7 @@ DEST="${MY_HOME}/Downloads/${FILE}"
 log_note "Installing \"dmd 2.112.0\"."
 if ! command -v dmd >/dev/null 2>&1; then
     wget -O "$DEST" "$URL" > /dev/null 2>&1
-    sudo apt install -y "$DEST" > /dev/null 2>&1
+    install_package "$DEST"
     rm -f "$DEST"
 fi
 
@@ -22,6 +22,6 @@ if ! command -v serve-d >/dev/null 2>&1; then
     tar -xzf "$DEST" -C "${MY_HOME}/Downloads" > /dev/null 2>&1
     mkdir -p "${MY_HOME}/ThirdParty/serve-d/"
     mv "${MY_HOME}/Downloads/serve-d" "${MY_HOME}/ThirdParty/serve-d/"
-    sudo create_symlink "${MY_HOME}/ThirdParty/serve-d/serve-d" "${MY_HOME}/.local/bin/serve-d"
+    create_symlink --sudo "${MY_HOME}/ThirdParty/serve-d/serve-d" "${MY_HOME}/.local/bin/serve-d"
     rm -f "$DEST"
 fi
