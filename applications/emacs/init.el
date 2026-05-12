@@ -1,7 +1,7 @@
 (require 'package)
 
 (setq package-archives
-      '(("melpa" . "http://melpa.org/packages/")
+      '(("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("gnu" . "https://elpa.gnu.org/packages/")))
 
@@ -24,14 +24,29 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq inhibit-startup-screen t)
-;; Fullscreen-mode default
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq resize-mini-windows t)
+(setq ring-bell-function 'ignore)
+(setq-default fill-column 120) ;; Display ruler for hard line wraps.
+(global-display-fill-column-indicator-mode 1)
+(recentf-mode 1)
+(setq recentf-max-menu-items 50)
 
-;; Indentation settings
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-(setq-default c-basic-offset 2)
+;; ;; Fullscreen-mode default
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Displaying line number in relative mode
+;; Reference: https://stackoverflow.com/a/54392862/22342267
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
+
+;; UTF-8 everywhere.
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8)
 
 ;; Install packages
 (dolist (pkg '(zenburn-theme
@@ -63,25 +78,39 @@
   (add-to-list 'exec-path "C:/Program Files/Git/bin")
   (add-to-list 'exec-path "C:/Program Files/Git/usr/bin")))
 
-;; Displaying line number in relative mode
-;; Reference: https://stackoverflow.com/a/54392862/22342267
-(global-display-line-numbers-mode 1)
-(setq display-line-numbers-type 'relative)
-
 ;; Mouse scroll speed reduction
 ;; Reference: https://stackoverflow.com/a/26053341/22342267
 (setq mouse-wheel-scroll-amount '(0.07))
 (setq mouse-wheel-progressive-speed nil)
 (setq ring-bell-function 'ignore)
 
-(use-package smex
-  :bind (("M-x" . smex))
-  :config (smex-initialize))
+(use-package helm
+  :custom
+  (helm-M-x-fuzzy-match t)
+  (helm-buffers-fuzzy-matching t)
+  (helm-recentf-fuzzy-match t)
+  (helm-semantic-fuzzy-match t)
+  (helm-imenu-fuzzy-match t)
+  (helm-locate-fuzzy-match t)
+  (helm-apropos-fuzzy-match t)
+  (helm-split-window-inside-p t)
+  (helm-move-to-line-cycle-in-source t)
+  (helm-ff-search-library-in-sexp t)
+  (helm-scroll-amount 8)
+  (helm-echo-input-in-header-line t)
+  :config
+  (helm-mode 1)
+  :bind
+  (("M-x" . helm-M-x)
+   ("C-x C-f" . helm-find-files)
+   ("C-x b" . helm-mini)
+   ("C-x r b" . helm-filtered-bookmarks)
+   ("M-y" . helm-show-kill-ring)))
 
-(setq indo-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-(setq ido-show-dot-for-dired t)
+(use-package helm-flx
+  :after helm
+  :config
+  (helm-flx-mode +1))
 
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -169,15 +198,3 @@
 (global-set-key (kbd "M-<up>") 'move-text-up)
 
 (global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
-
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
-(prefer-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(setq locale-coding-system 'utf-8)
-
-;; Display ruler for hard line wraps.
-(setq-default fill-column 120)
-(global-display-fill-column-indicator-mode 1)

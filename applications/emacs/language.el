@@ -17,6 +17,11 @@
 (require 'eglot)
 (setq eglot-report-progress nil)
 
+;; Indentation settings
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq-default c-basic-offset 2)
+
 ;; pylsp must be provided by the virtual environment
 ;; pip install 'python-lsp-server[all]'
 (add-to-list 'eglot-server-programs '((python-mode) "pylsp"))
