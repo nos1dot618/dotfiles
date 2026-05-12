@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Control Panel
+Comment=Miscellaneous Settings Control Panel
+Exec=/home/nosferatu/Dotfiles/applications/control-panel/application.py
+Icon=preferences-system
+Terminal=false
+Categories=Settings;
+StartupNotify=true
+StartupWMClass=Control Panel
