@@ -105,3 +105,8 @@ install_pipx_package() {
         pipx install "$package" > /dev/null 2>&1
     done
 }
+
+make_executable() {
+    chmod +x "$1"
+    log_note "Made \"$1\" executable."
+}

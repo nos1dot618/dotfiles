@@ -25,7 +25,7 @@ if [[ -f "$applications_file" ]]; then
         [[ -z "$application" || "$application" == \#* ]] && continue
 
         bash "$DOTFILES_ROOT/applications/$application/setup.sh"
-        log_info "Successfully installed application '$application'."
+        log_info "Successfully installed application \"$application\"."
     done < "$applications_file"
 fi
 

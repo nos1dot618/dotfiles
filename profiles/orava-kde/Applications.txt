@@ -8,3 +8,4 @@ dlang
 brave
 #zen
 #clion
+control-panel
