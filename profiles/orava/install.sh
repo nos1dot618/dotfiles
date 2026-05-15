@@ -29,9 +29,12 @@ install_package "${PACKAGES[@]}"
 # Python
 if apt-cache show python3.12-venv > /dev/null 2>&1; then
     install_package python3.12 python3.12-venv
-else
+elif apt-cache show python3.11-venv > /dev/null 2>&1; then
     log_warn "Python 3.12 is not available, falling back to Python 3.11."
     install_package python3.11 python3.11-venv
+else
+    log_warn "Python 3.11 is not available, installing default Python 3 packages."
+    install_package python3 python3-venv
 fi
 
 setup_pipx

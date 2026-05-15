@@ -11,7 +11,13 @@ HOSTNAME="orava"
 sudo hostnamectl set-hostname "$HOSTNAME"
 log_info "Hostname set to \"$HOSTNAME\"."
 
-sudo -E bash "$DOTFILES_ROOT/profiles/orava/install.sh"
+# In some systems preserving the environment is not possible,
+# thus passing the envrionment explicitly.
+sudo DOTFILES_ROOT="$DOTFILES_ROOT" \
+    PROFILE="$PROFILE" \
+    MY_HOME="$MY_HOME" \
+    MY_USER="$MY_USER" \
+    bash "$DOTFILES_ROOT/profiles/orava/install.sh"
 
 direnv allow ~
 log_info "Set up environment variables management via \"direnv\"".
