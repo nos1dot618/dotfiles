@@ -33,6 +33,8 @@
 
 ;; ;; Fullscreen-mode default
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(width . 100))
+(add-to-list 'default-frame-alist '(height . 27))
 
 ;; Displaying line number in relative mode
 ;; Reference: https://stackoverflow.com/a/54392862/22342267
