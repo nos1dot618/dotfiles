@@ -10,8 +10,7 @@ sudo DOTFILES_ROOT="$DOTFILES_ROOT" \
     MY_USER="$MY_USER" \
     bash "$PROFILE/install.sh"
 
-bash "$PROFILE/applications/spectacle/setup.sh"
-bash "$PROFILE/applications/tesseract-ocr/setup.sh"
-log_info "Set up \"Orave-KDE\" specific applications successfully."
+bash "$PROFILE/autostart.sh"
+log_info "Set up KDE Plasma autostart script successfully."
 
 log_info "Set up profile \"Orave-Kubuntu-26.04LTS\" successfully."

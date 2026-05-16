@@ -9,3 +9,5 @@ brave
 #zen
 #clion
 control-panel
+spectacle
+tesseract-ocr

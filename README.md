@@ -7,15 +7,13 @@
 For GNU/Linux:
 
 ```bash
-# Do not run these scripts with elevated privileges
-bash first.sh
+# Do not run this scripts with elevated privileges.
 bash setup.sh
 ```
 
 For Windows:
 
 ```ps1
-& First.ps1
 & Setup.ps1
 ```
 
