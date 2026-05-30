@@ -1,0 +1,15 @@
+bash
+#emacs
+fish
+git
+ssh
+cloudflare-warp
+#dlang
+brave
+#zen
+#clion
+#control-panel
+#spectacle
+#tesseract-ocr
+vscodium
+typst

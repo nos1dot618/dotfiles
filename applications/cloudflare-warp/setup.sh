@@ -3,7 +3,7 @@ set -eu
 source "$DOTFILES_ROOT/commons/utils.sh"
 
 function setup_cloudflare_warp() {
-    warp-cli registration new --accept-tos
+    warp-cli registration new -- --accept-tos
 }
 
 if ! dpkg -s cloudflare-warp >/dev/null 2>&1; then

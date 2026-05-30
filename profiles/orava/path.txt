@@ -13,3 +13,4 @@ $HOME/.ghcup/bin/
 $HOME/ThirdParty/go/bin/
 $HOME/.local/go/bin/
 $HOME/ThirdParty/zen/
+$HOME/ThirdParty/typst/

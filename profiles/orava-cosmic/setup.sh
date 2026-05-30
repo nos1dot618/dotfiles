@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-set -xeu
+set -eu
+source "$DOTFILES_ROOT/commons/utils.sh"
 
 bash "$DOTFILES_ROOT/profiles/orava/setup.sh"
 
-# DISCLAIMER: This does not work, since COSMIC does not rely on GNOME anymore.
-## Make the Cosmic Dock show only windows that are present in the current workspace.
-## gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
+sudo DOTFILES_ROOT="$DOTFILES_ROOT" \
+    PROFILE="$PROFILE" \
+    MY_HOME="$MY_HOME" \
+    MY_USER="$MY_USER" \
+    bash "$PROFILE/install.sh"
+
+log_info "Set up profile \"Orave-Cosmic\" successfully."
