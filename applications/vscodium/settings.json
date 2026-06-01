@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Dark+",
   "workbench.statusBar.visible": true,
   "editor.minimap.enabled": false,
   "breadcrumbs.enabled": false,
@@ -15,7 +15,6 @@
   "window.menuStyle": "native",
   "window.titleBarStyle": "native",
   "window.menuBarVisibility": "toggle",
-  "workbench.preferredDarkColorTheme": "Visual Studio Dark",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "update.mode": "none",
   "update.showReleaseNotes": false,
@@ -28,5 +27,14 @@
   },
   "[jsonc]": {
     "editor.tabSize": 2
+  },
+  "zig.zls.enabled": "on",
+  "editor.roundedSelection": false,
+  "editor.wordWrapColumn": 120,
+  "editor.rulers": [
+    120
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
   }
 }
