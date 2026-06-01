@@ -13,7 +13,7 @@ $env:DOTFILES_PROFILE = $DOTFILES_PROFILE
 [Environment]::SetEnvironmentVariable("DOTFILES_ROOT", $DOTFILES_ROOT, "User")
 [Environment]::SetEnvironmentVariable("DOTFILES_PROFILE", $DOTFILES_PROFILE, "User")
 
-. (Join-Path $env:DOTFILES_ROOT "Common.ps1")
+. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
 Elevate
 

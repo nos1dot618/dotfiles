@@ -1,4 +1,4 @@
-. (Join-Path $env:DOTFILES_ROOT "Common.ps1")
+. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
 function Git-Push {
     param(

@@ -1,4 +1,4 @@
-. (Join-Path $env:DOTFILES_ROOT "Common.ps1")
+. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
 $Version = "8.9.4"
 $File = "npp.$Version.portable.x64.zip"

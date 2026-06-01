@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-. (Join-Path $env:DOTFILES_ROOT "Common.ps1")
+. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
 $Version = "1.116.02821"
 $File = "VSCodium-win32-x64-$Version.zip"

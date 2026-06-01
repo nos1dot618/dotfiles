@@ -1,5 +1,6 @@
-. (Join-Path $env:DOTFILES_ROOT "Common.ps1")
+. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 . Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Prompt.ps1")
+. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Hooks.ps1")
 . Source-Script (Join-Path $env:DOTFILES_ROOT "applications\git\Utils.ps1")
 
 # Parsing %DOTFILES_PROFILE%\Paths.txt and updating PATH environment variable.

@@ -1,8 +1,8 @@
 powershell
-emacs
+#emacs
 git
 ssh
 windows-terminal
-notepad-plus-plus
-zig
+#notepad-plus-plus
+#zig
 vscodium
