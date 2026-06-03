@@ -1,6 +1,7 @@
 . (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 . Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Prompt.ps1")
 . Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Hooks.ps1")
+. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Config.ps1")
 . Source-Script (Join-Path $env:DOTFILES_ROOT "applications\git\Utils.ps1")
 
 # Parsing %DOTFILES_PROFILE%\Paths.txt and updating PATH environment variable.
@@ -46,4 +47,9 @@ if (Test-Path $AliasesFile) {
 
         Set-Alias $Alias $Command
     }
+}
+
+if ($SHOW_HISTORY) {
+    Import-Module PSReadLine -MinimumVersion 2.1.0 -Force
+    Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
 }

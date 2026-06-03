@@ -9,6 +9,7 @@ function Elevate {
 }
 
 function Log {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string]$Level,
@@ -32,6 +33,7 @@ function Log {
 }
 
 function Error {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string[]]$Message,
@@ -44,6 +46,7 @@ function Error {
 }
 
 function Info {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string[]]$Message
@@ -53,6 +56,7 @@ function Info {
 }
 
 function Warn {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string[]]$Message
@@ -62,6 +66,7 @@ function Warn {
 }
 
 function Source-Script {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string]$Script
@@ -76,6 +81,7 @@ function Source-Script {
 }
 
 function Add-ToUserPath {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string]$PathToAdd
@@ -122,6 +128,7 @@ function Install-Package {
 }
 
 function Create-Directory {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string]$Path
@@ -132,6 +139,7 @@ function Create-Directory {
 }
 
 function Create-Symboliclink {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
         [string]$Target,
@@ -142,4 +150,24 @@ function Create-Symboliclink {
     New-Item -ItemType SymbolicLink -Path $Destination -Target $Target -Force | Out-Null
     if ($?) { Info -Message "Successfully created symlink", "from '$Destination'", "to '$Target'." }
     else { Error -Message "Failed to create symlink '$Destination' -> '$Target'." }
+}
+
+function Install-ModuleIfMissing {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [string]$ModuleName,
+        [version]$MinimumVersion = "0.0"
+    )
+
+    $Installed = Get-Module -ListAvailable -Name $ModuleName | Sort-Object Version -Descending | Select-Object -First 1
+    if (-not $Installed -or $Installed.Version -lt $MinimumVersion) {
+        Info -Message "Installing module '$ModuleName'..."
+        Install-Module -Name $ModuleName -MinimumVersion $MinimumVersion -Scope CurrentUser -Force -AllowClobber
+    }
+    else {
+        Info -Message "Module '$ModuleName' is already installed."
+    }
+
+    Import-Module $ModuleName -ErrorAction Stop
 }
