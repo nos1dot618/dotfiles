@@ -40,8 +40,8 @@
         "list": 
         [
             {
-                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\stonehenge.jpg",
-                "backgroundImageOpacity": 0.2,
+                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\azumanga-daioh.jpg",
+                "backgroundImageOpacity": 0.1,
                 "colorScheme": "Dimidium",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "experimental.rainbowSuggestions": true,
@@ -89,8 +89,8 @@
             {
                 "altGrAliasing": true,
                 "antialiasingMode": "grayscale",
-                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\stonehenge.jpg",
-                "backgroundImageOpacity": 0.2,
+                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\azumanga-daioh.jpg",
+                "backgroundImageOpacity": 0.1,
                 "closeOnExit": "automatic",
                 "colorScheme": "Dimidium",
                 "commandline": "ssh -i %USERPROFILE%\\Keys\\local\\nosferatu-debian\\id_ed25519 nosferatu@127.0.0.1 -p 2222",
