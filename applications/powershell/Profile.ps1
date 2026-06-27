@@ -49,6 +49,10 @@ if (Test-Path $AliasesFile) {
     }
 }
 
+# Enable UTF-8.
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+[Console]::InputEncoding  = [System.Text.UTF8Encoding]::new()
+
 if ($SHOW_HISTORY) {
     Import-Module PSReadLine -MinimumVersion 2.1.0 -Force
     Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
