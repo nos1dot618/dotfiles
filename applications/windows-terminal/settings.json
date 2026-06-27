@@ -1,7 +1,13 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [],
+    "actions":
+    [
+        {
+            "command": "restartConnection",
+            "id": "User.restartConnection"
+        }
+    ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -19,6 +25,10 @@
         {
             "id": "Terminal.DuplicatePaneAuto",
             "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.restartConnection",
+            "keys": "ctrl+shift+r"
         }
     ],
     "newTabMenu": 
@@ -118,6 +128,38 @@
                 "hidden": true,
                 "name": "Developer PowerShell for VS 18",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\azumanga-daioh.jpg",
+                "backgroundImageOpacity": 0.1,
+                "closeOnExit": "automatic",
+                "colorScheme": "Dimidium",
+                "commandline": "C:\\Program Files\\Git\\git-bash.exe",
+                "cursorShape": "bar",
+                "experimental.rainbowSuggestions": true,
+                "guid": "{ce4fec41-5ffa-4cda-9e21-ed815d4aa479}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "\ud83d\udcbd",
+                "name": "Git Bash",
+                "padding": "8, 8, 8, 8",
+                "showMarksOnScrollbar": true,
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
+            },
+            {
+                "backgroundImage": "C:\\Users\\Nosferatu\\Pictures\\wallpapers\\jujutsu-kaisen\\okkotsu.jpg",
+                "backgroundImageOpacity": 0.1,
+                "colorScheme": "Dimidium",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -c \"ssh gitea-vm\"",
+                "guid": "{f9e96ec2-6991-4253-9485-bb1da0eafe40}",
+                "hidden": false,
+                "icon": "\ue753",
+                "name": "Gitea VM",
+                "tabTitle": "Gitea VM"
             }
         ]
     },
