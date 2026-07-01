@@ -14,7 +14,7 @@ bash setup.sh
 For Windows:
 
 ```ps1
-& Setup.ps1
+& Initialize.ps1
 ```
 
 > Requires [Chocolatey](https://chocolatey.org/install) to be installed.

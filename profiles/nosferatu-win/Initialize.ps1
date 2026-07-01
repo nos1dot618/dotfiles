@@ -14,7 +14,7 @@ if (Test-Path $ApplicationsFile) {
     foreach ($Application in Get-Content $ApplicationsFile) {
         $Application = $Application.Trim()
         if ([string]::IsNullOrWhiteSpace($Application) -or $Application.StartsWith("#") ) { continue }
-        . Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\$Application\Setup.ps1")
+        . Source-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\$Application\Initialize.ps1")
         Write-InfoLog -Message "Successfully installed application '$Application'."
     }
 }
