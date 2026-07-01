@@ -1,3 +1,5 @@
+Import-Module "PSLogger"
+
 function Elevate {
     # Elevate powershell environment to Administrator Priviledges,
     # which is needed for creating Symbolic Links and Modifying PATH environment variable.
@@ -6,63 +8,6 @@ function Elevate {
         Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
         exit
     }
-}
-
-function Log {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [string]$Level,
-        [Parameter(Mandatory)]
-        [ConsoleColor]$Color,
-        [Parameter(Mandatory)]
-        [string[]]$Message
-    )
-
-    if (-not $Message -or $Message.Count -eq 0) { return }
-
-    Write-Host "[" -NoNewline
-    Write-Host "$Level" -ForegroundColor $Color -NoNewline
-    Write-Host "] $($Message[0])"
-
-    $Indent = " " * "[$Level] ".Length
-    if ($Message.Count -le 1) { return }
-    foreach ($Line in $Message[1..($Message.Count - 1)]) {
-        Write-Host "$Indent$Line"
-    }
-}
-
-function Error {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [string[]]$Message,
-        [switch]$Exit
-    )
-    Log -Level "ERROR" -Color Red -Message $Message
-    if ($Exit) {
-        exit 1
-    }
-}
-
-function Info {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [string[]]$Message
-    )
-
-    Log -Level "INFO" -Color Blue -Message $Message
-}
-
-function Warn {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [string[]]$Message
-    )
-
-    Log -Level "WARN" -Color Yellow -Message $Message
 }
 
 function Source-Script {
@@ -76,7 +21,7 @@ function Source-Script {
         . $Script
     }
     else {
-        Error -Message "Script '$Script' not found." -Exit
+        Write-ErrorLog -Message "Script '$Script' not found." -Exit
     }
 }
 
@@ -89,7 +34,7 @@ function Add-ToUserPath {
     $PathToAdd = [Environment]::ExpandEnvironmentVariables($PathToAdd)
     $PathToAdd = $PathToAdd.TrimEnd("\").ToLowerInvariant() # Normalizing the path.
     if (-not (Test-Path $PathToAdd)) {
-        Warn -Message "Path '$PathToAdd' does not exist, skipping adding it to the PATH."
+        Write-WarnLog -Message "Path '$PathToAdd' does not exist, skipping adding it to the PATH."
         return
     }
 
@@ -99,13 +44,13 @@ function Add-ToUserPath {
     $PathEntries = $PathEntries | ForEach-Object { $_.TrimEnd('\').ToLowerInvariant() } # Normalizing the PATH entries.
 
     if ($PathEntries -notcontains $PathToAdd) {
-        Info -Message "Adding '$PathToAdd' to User PATH."
+        Write-InfoLog -Message "Adding '$PathToAdd' to User PATH."
         $NewPath = @($PathEntries + $PathToAdd) -join ';'
         [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
     }
 
     if (($env:PATH -split ';') -notcontains $PathToAdd) {
-        Info -Message "Adding '$PathToAdd' to Session PATH."
+        Write-InfoLog -Message "Adding '$PathToAdd' to Session PATH."
         $env:PATH += ";$PathToAdd"
     }
 }
@@ -123,8 +68,8 @@ function Install-Package {
         "Choco" { choco install $Package -y | Out-Null }
     }
 
-    if ($?) { Info -Message "Successfully installed package '$Package'." }
-    else { Error -Message "Failed to install package '$Package'." }
+    if ($?) { Write-InfoLog -Message "Successfully installed package '$Package'." }
+    else { Write-ErrorLog -Message "Failed to install package '$Package'." }
 }
 
 function Create-Directory {
@@ -135,7 +80,7 @@ function Create-Directory {
     )
 
     New-Item -ItemType Directory -Path $Path -Force | Out-Null
-    if (-not $?) { Error -Message "Failed to create directory '$Path'." }
+    if (-not $?) { Write-ErrorLog -Message "Failed to create directory '$Path'." }
 }
 
 function Create-Symboliclink {
@@ -148,8 +93,8 @@ function Create-Symboliclink {
     )
 
     New-Item -ItemType SymbolicLink -Path $Destination -Target $Target -Force | Out-Null
-    if ($?) { Info -Message "Successfully created symlink", "from '$Destination'", "to '$Target'." }
-    else { Error -Message "Failed to create symlink '$Destination' -> '$Target'." }
+    if ($?) { Write-InfoLog -Message "Successfully created symlink", "from '$Destination'", "to '$Target'." }
+    else { Write-ErrorLog -Message "Failed to create symlink '$Destination' -> '$Target'." }
 }
 
 function Install-ModuleIfMissing {
@@ -162,11 +107,11 @@ function Install-ModuleIfMissing {
 
     $Installed = Get-Module -ListAvailable -Name $ModuleName | Sort-Object Version -Descending | Select-Object -First 1
     if (-not $Installed -or $Installed.Version -lt $MinimumVersion) {
-        Info -Message "Installing module '$ModuleName'..."
+        Write-InfoLog -Message "Installing module '$ModuleName'..."
         Install-Module -Name $ModuleName -MinimumVersion $MinimumVersion -Scope CurrentUser -Force -AllowClobber
     }
     else {
-        Info -Message "Module '$ModuleName' is already installed."
+        Write-InfoLog -Message "Module '$ModuleName' is already installed."
     }
 
     Import-Module $ModuleName -ErrorAction Stop

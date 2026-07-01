@@ -13,6 +13,21 @@ $env:DOTFILES_PROFILE = $DOTFILES_PROFILE
 [Environment]::SetEnvironmentVariable("DOTFILES_ROOT", $DOTFILES_ROOT, "User")
 [Environment]::SetEnvironmentVariable("DOTFILES_PROFILE", $DOTFILES_PROFILE, "User")
 
+$CustomModulesPath = (Join-Path  $env:DOTFILES_ROOT "applications\powershell\Modules")
+$CurrentModulesPath = [Environment]::GetEnvironmentVariable("PSModulePath", "User")
+
+if ($CurrentModulesPath -notlike "*$CustomModulesPath*") {
+    $NewModulesPath = if ([string]::IsNullOrWhiteSpace($CurrentModulesPath)) { $CustomModulesPath }
+    else { "$CurrentModulesPath;$CustomModulesPath" }
+    [Environment]::SetEnvironmentVariable("PSModulePath", $NewModulesPath, "User")
+}
+
+if ($env:PSModulePath -notlike "*$CustomModulesPath*") {
+    $env:PSModulePath += ";$CustomModulesPath"
+}
+
+git submodule update --init --recursive
+
 . (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
 Elevate

@@ -36,5 +36,8 @@
   ],
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   }
 }

@@ -1,0 +1,3 @@
+[submodule "applications/powershell/Modules/PSLogger"]
+	path = applications/powershell/Modules/PSLogger
+	url = https://gitlab.com/ninthcircle/PSLogger

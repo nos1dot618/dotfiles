@@ -8,7 +8,7 @@ function Invoke-GitPush {
     )
 
     foreach ($Remote in (git remote)) {
-        Info -Message "Pushing to remote '$Remote'."
+        Write-InfoLog -Message "Pushing to remote '$Remote'."
 
         if ($Args.Count -eq 0) { git push $Remote HEAD }
         else { git push $Remote @Args }
@@ -16,11 +16,11 @@ function Invoke-GitPush {
 }
 
 function Invoke-GitPrune {
-    Info -Message "Removing stale remote-tracking branches..."
+    Write-InfoLog -Message "Removing stale remote-tracking branches..."
     git fetch --prune
-    Info -Message "Expiring reflogs..."
+    Write-InfoLog -Message "Expiring reflogs..."
     git reflog expire --expire=now --all
-    Info -Message "Pruning unreachable objects..."
+    Write-InfoLog -Message "Pruning unreachable objects..."
     git gc --prune=now --aggressive
 }
 
