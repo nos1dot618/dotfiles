@@ -4,5 +4,5 @@ $ErrorActionPreference = "Stop"
 
 $ConfigPath = (Join-Path $env:DOTFILES_ROOT "applications\ssh\config")
 
-Create-Directory -Path (Join-Path $env:USERPROFILE ".ssh")
-Create-SymbolicLink -Destination (Join-Path $env:USERPROFILE ".ssh\config") -Target $ConfigPath
+New-Directory -Path (Join-Path $env:USERPROFILE ".ssh")
+New-SymbolicLink -Destination (Join-Path $env:USERPROFILE ".ssh\config") -Target $ConfigPath

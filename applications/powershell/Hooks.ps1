@@ -12,8 +12,8 @@ function Invoke-DirectoryEnvironment {
         $global:LastDirEnvInvokedPath = $Path
         $DirEnvFile = Join-Path $Path ".direnv.ps1"
         if (Test-Path $DirEnvFile) {
-            Write-InfoLog -Message "Invoking '$DirEnvFile'."
-            . Source-Script -Script $DirEnvFile
+            Write-InfoLog -Message "Invoking `"$DirEnvFile`"."
+            . Invoke-Script -Script $DirEnvFile
         }
     }
 }

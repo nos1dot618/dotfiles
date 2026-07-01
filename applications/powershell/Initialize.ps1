@@ -5,8 +5,8 @@ $ErrorActionPreference = "Stop"
 if (Get-Module PSReadLine) {
     Remove-Module PSReadLine -Force -ErrorAction SilentlyContinue
 }
-Install-ModuleIfMissing -ModuleName "PSReadLine" -MinimumVersion 2.2.6
+Install-ModuleIfMissing -Name "PSReadLine" -MinimumVersion 2.2.6
 
-Create-Symboliclink `
+New-SymbolicLink `
     -Destination $PROFILE `
     -Target (Join-Path $env:DOTFILES_ROOT "applications\powershell\Profile.ps1")

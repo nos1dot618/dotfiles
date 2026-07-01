@@ -2,6 +2,8 @@ $ErrorActionPreference = "Stop"
 
 . (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
+# TODO: Create utility function for this.
+#       Then create a .psd1 file storing all the metadata used to call that function.
 $Version = "1.116.02821"
 $File = "VSCodium-win32-x64-$Version.zip"
 $Url = "https://github.com/VSCodium/vscodium/releases/download/$Version/$File"
@@ -31,4 +33,4 @@ Add-ToUserPath -PathToAdd $InstallDir
 
 $Target = (Join-Path $env:DOTFILES_ROOT "applications\vscodium\settings.json")
 $Destination = (Join-Path $env:USERPROFILE "AppData\Roaming\VSCodium\User\settings.json")
-Create-SymbolicLink -Destination $Destination -Target $Target
+New-SymbolicLink -Destination $Destination -Target $Target

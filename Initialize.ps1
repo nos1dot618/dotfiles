@@ -32,4 +32,4 @@ git submodule update --init --recursive
 
 Elevate
 
-. Source-Script (Join-Path $env:DOTFILES_PROFILE "Initialize.ps1")
+. Invoke-Script (Join-Path $env:DOTFILES_PROFILE "Initialize.ps1")

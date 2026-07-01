@@ -1,8 +1,8 @@
 . (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
-. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Prompt.ps1")
-. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Hooks.ps1")
-. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Config.ps1")
-. Source-Script (Join-Path $env:DOTFILES_ROOT "applications\git\Utils.ps1")
+. Invoke-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Prompt.ps1")
+. Invoke-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Hooks.ps1")
+. Invoke-Script (Join-Path $env:DOTFILES_ROOT "applications\powershell\Config.ps1")
+. Invoke-Script (Join-Path $env:DOTFILES_ROOT "applications\git\Utils.ps1")
 
 # Parsing %DOTFILES_PROFILE%\Paths.txt and updating PATH environment variable.
 $PathsFile = Join-Path $env:DOTFILES_PROFILE "Paths.txt"
@@ -51,9 +51,15 @@ if (Test-Path $AliasesFile) {
 
 # Enable UTF-8.
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
-[Console]::InputEncoding  = [System.Text.UTF8Encoding]::new()
+[Console]::InputEncoding = [System.Text.UTF8Encoding]::new()
 
 if ($SHOW_HISTORY) {
     Import-Module PSReadLine -MinimumVersion 2.1.0 -Force
     Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
+}
+
+@{
+    "ss" = "Select-String"
+}.GetEnumerator() | ForEach-Object {
+    Set-Alias -Name $_.Key -Value $_.Value
 }

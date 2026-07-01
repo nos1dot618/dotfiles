@@ -10,10 +10,11 @@ function Elevate {
     }
 }
 
-function Source-Script {
+function Invoke-Script {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]$Script
     )
     # `-PathType Leaf` ensures that the script is a file.
@@ -21,7 +22,7 @@ function Source-Script {
         . $Script
     }
     else {
-        Write-ErrorLog -Message "Script '$Script' not found." -Exit
+        Write-ErrorLog -Message "Script `"$Script`" not found." -Exit
     }
 }
 
@@ -29,12 +30,13 @@ function Add-ToUserPath {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]$PathToAdd
     )
     $PathToAdd = [Environment]::ExpandEnvironmentVariables($PathToAdd)
     $PathToAdd = $PathToAdd.TrimEnd("\").ToLowerInvariant() # Normalizing the path.
     if (-not (Test-Path $PathToAdd)) {
-        Write-WarnLog -Message "Path '$PathToAdd' does not exist, skipping adding it to the PATH."
+        Write-WarnLog -Message "Path `"$PathToAdd`" does not exist, skipping adding it to the PATH."
         return
     }
 
@@ -44,14 +46,14 @@ function Add-ToUserPath {
     $PathEntries = $PathEntries | ForEach-Object { $_.TrimEnd('\').ToLowerInvariant() } # Normalizing the PATH entries.
 
     if ($PathEntries -notcontains $PathToAdd) {
-        Write-InfoLog -Message "Adding '$PathToAdd' to User PATH."
         $NewPath = @($PathEntries + $PathToAdd) -join ';'
         [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
+        Write-InfoLog -Message "Added `"$PathToAdd`" to User PATH."
     }
 
     if (($env:PATH -split ';') -notcontains $PathToAdd) {
-        Write-InfoLog -Message "Adding '$PathToAdd' to Session PATH."
         $env:PATH += ";$PathToAdd"
+        Write-InfoLog -Message "Added `"$PathToAdd`" to Session PATH."
     }
 }
 
@@ -61,6 +63,7 @@ function Install-Package {
         [Parameter(Mandatory, ParameterSetName = "Choco")]
         [switch]$Choco,
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]$Package
     )
 
@@ -68,51 +71,72 @@ function Install-Package {
         "Choco" { choco install $Package -y | Out-Null }
     }
 
-    if ($?) { Write-InfoLog -Message "Successfully installed package '$Package'." }
-    else { Write-ErrorLog -Message "Failed to install package '$Package'." }
+    if ($?) { Write-InfoLog -Message "Successfully installed package `"$Package`"." }
+    else { Write-ErrorLog -Message "Failed to install package `"$Package`"." }
 }
 
-function Create-Directory {
+function New-Directory {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]$Path
     )
 
     New-Item -ItemType Directory -Path $Path -Force | Out-Null
-    if (-not $?) { Write-ErrorLog -Message "Failed to create directory '$Path'." }
+    if (-not $?) { Write-ErrorLog -Message "Failed to create directory `"$Path`"." }
 }
 
-function Create-Symboliclink {
+function New-SymbolicLink {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]$Target,
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]$Destination
     )
 
     New-Item -ItemType SymbolicLink -Path $Destination -Target $Target -Force | Out-Null
-    if ($?) { Write-InfoLog -Message "Successfully created symlink", "from '$Destination'", "to '$Target'." }
-    else { Write-ErrorLog -Message "Failed to create symlink '$Destination' -> '$Target'." }
+    if ($?) { Write-InfoLog -Message @("Successfully created symlink", "from `"$Destination`"", "to `"$Target`".") }
+    else { Write-ErrorLog -Message @("Failed to create symlink", "from `"$Destination`"", "to `"$Target`".") }
 }
 
 function Install-ModuleIfMissing {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
-        [string]$ModuleName,
+        [ValidateNotNullOrEmpty()]
+        [string]$Name,
         [version]$MinimumVersion = "0.0"
     )
 
-    $Installed = Get-Module -ListAvailable -Name $ModuleName | Sort-Object Version -Descending | Select-Object -First 1
+    $Installed = Get-Module -ListAvailable -Name $Name | Sort-Object Version -Descending | Select-Object -First 1
     if (-not $Installed -or $Installed.Version -lt $MinimumVersion) {
-        Write-InfoLog -Message "Installing module '$ModuleName'..."
-        Install-Module -Name $ModuleName -MinimumVersion $MinimumVersion -Scope CurrentUser -Force -AllowClobber
+        Write-InfoLog -Message "Installing PowerShell module `"$Name`"..."
+        Install-Module -Name $Name -MinimumVersion $MinimumVersion -Scope CurrentUser -Force -AllowClobber
     }
     else {
-        Write-InfoLog -Message "Module '$ModuleName' is already installed."
+        Write-InfoLog -Message "PowerShell module `"$Name`" is already installed."
     }
 
-    Import-Module $ModuleName -ErrorAction Stop
+    Import-Module $Name -ErrorAction Stop
+}
+
+function Invoke-Touch {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]$Filepath
+    )
+    if (Test-Path $Filepath) { (Get-Item $Filepath).LastWriteTime = Get-Date }
+    else { New-Item -ItemType File -Path $Filepath | Out-Null }
+}
+
+@{
+    "touch" = "Invoke-Touch"
+}.GetEnumerator() | ForEach-Object {
+    Set-Alias -Name $_.Key -Value $_.Value
 }

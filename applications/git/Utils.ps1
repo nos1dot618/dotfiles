@@ -8,14 +8,18 @@ function Invoke-GitPush {
     )
 
     foreach ($Remote in (git remote)) {
-        Write-InfoLog -Message "Pushing to remote '$Remote'."
+        Write-InfoLog -Message "Pushing to remote `"$Remote`"..."
 
-        if ($Args.Count -eq 0) { git push $Remote HEAD }
-        else { git push $Remote @Args }
+        $Output = if ($Args.Count -eq 0) { git push $Remote HEAD 2>&1 } else { git push $Remote @Args 2>&1 }
+        if ($LASTEXITCODE -ne 0) {
+            Write-ErrorLog -Message $Output
+        }
     }
 }
 
 function Invoke-GitPrune {
+    [CmdletBinding()]
+    param ()
     Write-InfoLog -Message "Removing stale remote-tracking branches..."
     git fetch --prune
     Write-InfoLog -Message "Expiring reflogs..."
@@ -24,10 +28,18 @@ function Invoke-GitPrune {
     git gc --prune=now --aggressive
 }
 
+function Invoke-GitGUI {
+    [CmdletBinding()]
+    param ()
+    gitk --all
+}
+
 @{
     "gitp"     = "Invoke-GitPush"
     "gitpush"  = "Invoke-GitPush"
     "gitprune" = "Invoke-GitPrune"
+    "gitg"     = "Invoke-GitGUI"
+    "gitgui"   = "Invoke-GitGUI"
 }.GetEnumerator() | ForEach-Object {
     Set-Alias -Name $_.Key -Value $_.Value
 }
