@@ -30,8 +30,12 @@ function Invoke-GitPrune {
 
 function Invoke-GitGUI {
     [CmdletBinding()]
-    param ()
-    gitk --all
+    param (
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]]$Args
+    )
+    if ($Args.Count -eq 0) { gitk --all }
+    else { gitk @Args }
 }
 
 @{

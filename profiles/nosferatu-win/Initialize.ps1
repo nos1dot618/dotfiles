@@ -15,8 +15,8 @@ if (Test-Path $ApplicationsFile) {
         $Application = $Application.Trim()
         if ([string]::IsNullOrWhiteSpace($Application) -or $Application.StartsWith("#") ) { continue }
         . Invoke-Script -Script (Join-Path $env:DOTFILES_ROOT "applications\$Application\Initialize.ps1")
-        Write-InfoLog -Message "Successfully installed application `"$Application`"."
+        Write-SuccessLog -Message "Application `"$Application`" installed."
     }
 }
 
-Write-InfoLog -Message "Successfully set up `"Nosferatu-Win`" profile." 
+Write-SuccessLog -Message "Profile `"Nosferatu-Win`" set up."

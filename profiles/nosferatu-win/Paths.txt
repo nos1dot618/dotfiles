@@ -1,13 +1,9 @@
-%USERPROFILE%\Thirdparty\emacs-30.1\bin\
-%USERPROFILE%\Thirdparty\focus\
 %USERPROFILE%\Thirdparty\openjdk-24.0.1\bin\
 %USERPROFILE%\Thirdparty\nasm-2.16.03\
 %USERPROFILE%\Thirdparty\clion-2025.2\bin\
 %USERPROFILE%\Thirdparty\idea-2025.1.3\bin\
-%USERPROFILE%\Thirdparty\db-browser-for-sqlite-3.13.1\
 %USERPROFILE%\Thirdparty\rclone-1.71.2\
 %USERPROFILE%\Thirdparty\typst\
-%USERPROFILE%\Thirdparty\microsoft-terminal\
 %USERPROFILE%\Thirdparty\clion-2025.2\bin\mingw\bin\
 %USERPROFILE%\Thirdparty\node-packages\node_modules\.bin\
 %USERPROFILE%\Thirdparty\go-1.26.0\bin\

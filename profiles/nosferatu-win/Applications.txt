@@ -1,8 +1,17 @@
+# Core
 powershell
-#emacs
 git
 ssh
-windows-terminal
+
+# Editors
+#emacs
 #notepad-plus-plus
-#zig
 vscodium
+helix
+focus-editor
+
+# Applications
+windows-terminal
+
+# Languages
+#zig

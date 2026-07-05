@@ -2,6 +2,8 @@ $ErrorActionPreference = "Stop"
 
 . (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
 
-$Destination = Join-Path $env:USERPROFILE "\AppData\Local\Microsoft\Windows Terminal\settings.json"
-$Target = Join-Path $env:DOTFILES_ROOT "applications\windows-terminal\settings.json"
-New-SymbolicLink -Destination $Destination -Target $Target
+Install-PortableArchive -ManifestPath (Join-Path $env:DOTFILES_ROOT "applications\windows-terminal\Manifest.psd1")
+
+New-SymbolicLink `
+    -Destination (Join-Path $env:LOCALAPPDATA "Microsoft\Windows Terminal\settings.json") `
+    -Target (Join-Path $env:DOTFILES_ROOT "applications\windows-terminal\settings.json")
