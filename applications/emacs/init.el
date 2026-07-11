@@ -109,7 +109,11 @@
    ("C-x r b" . helm-filtered-bookmarks)
    ("M-y" . helm-show-kill-ring)))
 
+(use-package flx
+  :ensure t)
+
 (use-package helm-flx
+  :ensure t
   :after helm
   :config
   (helm-flx-mode +1))
@@ -121,6 +125,8 @@
 ;; Custom key bindings
 ;; Works with emacs >= 29.1
 (global-set-key (kbd "C-,") 'duplicate-line)
+;; Disable accidental Emacs exit.
+(global-unset-key (kbd "C-x C-c"))
 
 ;; Redirect backups to ~/.config/emacs/backup
 (setq backup-directory-alist

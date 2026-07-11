@@ -15,7 +15,7 @@ def create_shell_file(desktop_file):
                 exec_command = line.split("=", 1)[1].strip()
 
     shell_file_path = os.path.join(bin_dir, app_name)
-            
+
     if exec_command:
         with open(shell_file_path, "w") as shell_file:
             shell_file.write(f"#!/bin/bash\n{exec_command}\n")
@@ -29,8 +29,8 @@ if __name__ == "__main__":
         print(f"error: permission denied: cannot write to {bin_dir}")
         print("info: please run the script with sudo")
         exit(1)
-    
+
     for filename in os.listdir(desktop_files_dir):
         if filename.endswith(".desktop"):
-            desktop_file_path = os.path.join(desktop_files_dir, filename)            
+            desktop_file_path = os.path.join(desktop_files_dir, filename)
             create_shell_file(desktop_file_path)

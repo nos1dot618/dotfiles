@@ -12,4 +12,3 @@ fc-cache -fv > /dev/null 2>&1
 log_note "Refreshed fonts cache."
 
 log_info "Set up Fonts successfully."
-

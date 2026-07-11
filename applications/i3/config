@@ -29,7 +29,7 @@ floating_modifier $mod
 # set default size for floating window
 for_window [floating] resize set 900 700
 bindsym $mod+x [floating] resize set 900 700
-	
+
 # start a terminal
 bindsym $mod+Return exec konsole
 
@@ -67,7 +67,7 @@ bindsym $mod+Shift+Right move right
 exec --no-startup-id pulseaudio
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"	
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # 'playerctl' media controls
 # Reference: https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html
@@ -96,7 +96,7 @@ for_window [class="copyq"] floating enable
 # 'gnome-screenshot': screenshot service
 bindsym --release Print exec gnome-screenshot -a # capture area
 bindsym --release $mod+Print exec gnome-screenshot -i # interactive screenshot
-			
+
 # custom key bindings
 bindsym --release $mod+comma exec --no-startup-id "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose"
 bindsym --release $mod+Shift+o exec "i3lock"

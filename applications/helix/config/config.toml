@@ -1,1 +1,10 @@
 theme = "carbon_transparent"
+
+[keys.insert]
+"A-x" = ["normal_mode", "command_mode"]
+
+[keys.normal]
+"A-x" = "command_mode"
+
+[keys.select]
+"A-x" = "command_mode"

@@ -1,11 +1,8 @@
 $ErrorActionPreference = "Stop"
 
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
-if (Get-Module PSReadLine) {
-    Remove-Module PSReadLine -Force -ErrorAction SilentlyContinue
-}
-Install-ModuleIfMissing -Name "PSReadLine" -MinimumVersion 2.2.6
+Install-PowerShellModule -Name "PSReadLine" -MinimumVersion 2.2.6
 
 New-SymbolicLink `
     -Destination $PROFILE `

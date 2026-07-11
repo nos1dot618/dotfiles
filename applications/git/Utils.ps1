@@ -1,4 +1,4 @@
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
 function Invoke-GitPush {
     [CmdletBinding()]
@@ -34,8 +34,12 @@ function Invoke-GitGUI {
         [Parameter(ValueFromRemainingArguments = $true)]
         [string[]]$Args
     )
-    if ($Args.Count -eq 0) { gitk --all }
-    else { gitk @Args }
+    if ($Args.Count -eq 0) {
+        gitk --all
+    }
+    else {
+        gitk @Args
+    }
 }
 
 @{

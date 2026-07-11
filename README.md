@@ -14,6 +14,7 @@ bash setup.sh
 For Windows:
 
 ```ps1
+# Run as administrator.
 & Initialize.ps1
 ```
 

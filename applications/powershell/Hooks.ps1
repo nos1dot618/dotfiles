@@ -1,4 +1,4 @@
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
 $global:LastDirEnvInvokedPath = ""
 
@@ -13,7 +13,7 @@ function Invoke-DirectoryEnvironment {
         $DirEnvFile = Join-Path $Path ".direnv.ps1"
         if (Test-Path $DirEnvFile) {
             Write-InfoLog -Message "Invoking `"$DirEnvFile`"."
-            . Invoke-Script -Script $DirEnvFile
+            . Invoke-ScriptFile -Path $DirEnvFile
         }
     }
 }

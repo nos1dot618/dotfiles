@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import (
     QLabel,
     QTextEdit,
     QCheckBox,
-)  
+)
 
 class ControlPanel(QWidget):
     def __init__(self):
@@ -22,7 +22,7 @@ class ControlPanel(QWidget):
         self.layout = QVBoxLayout()
 
         self.add_cloudflare_warp_controls()
-        
+
         self.output = QTextEdit()
         self.output.setReadOnly(True)
         self.layout.addWidget(self.output)
@@ -71,7 +71,7 @@ class ControlPanel(QWidget):
         if stderr: self.output.append(stderr)
 
         self.refresh_status()
-        
+
     def run_command(self, command):
         result = subprocess.run(command, capture_output=True, text=True)
         return result.stdout.strip(), result.stderr.strip()

@@ -43,7 +43,7 @@ battery all {
 disk "/" {
     format = "<span foreground='#93dc5c' font_weight='bold'>%avail</span>"
 }
-    
+
 memory {
    format = "<span foreground='#d12f2c' font_weight='bold'>%used:%available</span>"
    threshold_degraded = "1G"

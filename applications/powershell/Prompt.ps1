@@ -49,6 +49,6 @@ function Prompt {
 
         $GitInfo = "$Cyan$Line($Reset$GitInfo$Cyan)"
     }
-	
+
     return "`n$Cyan$TopLeftEdge$Line[$Reset$CurrentPath$Cyan]$GitInfo$Cyan`n$BottomLeftEdge$Line#$Reset "
 }

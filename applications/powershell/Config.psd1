@@ -1,0 +1,3 @@
+@{
+    ShowHistory = $true
+}

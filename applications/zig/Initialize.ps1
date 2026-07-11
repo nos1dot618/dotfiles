@@ -1,8 +1,8 @@
 $ErrorActionPreference = "Stop"
 
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
-Install-Package -Choco -Package zig
+Install-ChocolateyPackage -Package zig
 
 Install-PortableArchive `
     -ManifestPath (Join-Path $env:DOTFILES_ROOT "applications\zig\zls\Manifest.psd1") `

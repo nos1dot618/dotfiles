@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
 Install-PortableArchive -ManifestPath (Join-Path $env:DOTFILES_ROOT "applications\vscodium\Manifest.psd1")
 

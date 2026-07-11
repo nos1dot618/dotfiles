@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
 # Set global username and email.
 git config --global user.name "ninthcircle"

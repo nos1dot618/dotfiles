@@ -28,8 +28,6 @@ if ($env:PSModulePath -notlike "*$CustomModulesPath*") {
 
 git submodule update --init --recursive
 
-. (Join-Path $env:DOTFILES_ROOT "commons\Utils.ps1")
+. (Join-Path $env:DOTFILES_ROOT "Prelude.ps1")
 
-Elevate
-
-. Invoke-Script (Join-Path $env:DOTFILES_PROFILE "Initialize.ps1")
+. Invoke-ScriptFile -Path (Join-Path $env:DOTFILES_PROFILE "Initialize.ps1")
