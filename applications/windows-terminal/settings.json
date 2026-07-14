@@ -149,6 +149,9 @@
                 "source": "Windows.Terminal.SSH"
             },
             {
+                "backgroundImage": "C:\\Users\\Nosferatu\\Pictures\\wallpapers\\cowboy-bebop\\purple.jpg",
+                "backgroundImageOpacity": 0.09,
+                "colorScheme": "Dark+",
                 "guid": "{544f3c19-ae77-55ba-9dc8-a6a378810a56}",
                 "hidden": false,
                 "name": "SSH - debian",
