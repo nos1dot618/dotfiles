@@ -37,6 +37,9 @@
             "type": "remainingProfiles"
         },
         {
+            "type": "separator"
+        },
+        {
             "allowEmpty": false,
             "entries":
             [
@@ -66,7 +69,7 @@
         "list":
         [
             {
-                "backgroundImage": "C:\\Users\\Nosferatu\\Dotfiles\\pictures\\wallpapers\\azumanga-daioh.jpg",
+                "backgroundImage": "C:\\Users\\Nosferatu\\Pictures\\wallpapers\\azumanga-daioh\\azumanga-daioh-black.jpg",
                 "backgroundImageOpacity": 0.1,
                 "colorScheme": "Dimidium",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
@@ -149,7 +152,7 @@
                 "source": "Windows.Terminal.SSH"
             },
             {
-                "backgroundImage": "C:\\Users\\Nosferatu\\Pictures\\wallpapers\\cowboy-bebop\\purple.jpg",
+                "backgroundImage": "C:\\Users\\Nosferatu\\Pictures\\wallpapers\\lain\\lain-iwakura-under-the-bridge-16x9.jpg",
                 "backgroundImageOpacity": 0.09,
                 "colorScheme": "Dark+",
                 "guid": "{544f3c19-ae77-55ba-9dc8-a6a378810a56}",

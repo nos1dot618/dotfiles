@@ -40,5 +40,13 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "background.fullscreen": {
+    "images": ["C:/Users/Nosferatu/Pictures/wallpapers/cowboy-bebop/purple.jpg"],
+    "opacity": 0.05,
+    "size": "cover",
+    "position": "center",
+    "interval": 0,
+    "random": false
+  },
 }
