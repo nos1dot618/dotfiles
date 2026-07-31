@@ -14,12 +14,13 @@ foreach ($Package in Get-Content $ChocolateyPackagesPath) {
         Install-ChocolateyPackage -Package $Package
     }
     catch {
-        Write-ErrorLog -Message @(
-            "Failed to install Chocolatey package `"$Package`"."
-            $_.Exception.Message
-        )
+        Write-ErrorLog -Message "Failed to install Chocolatey package `"$Package`"." -Err $_
     }
 }
+
+$ApplicationCatalogue = Import-PowerShellDataFile `
+    -Path (Join-Path $env:DOTFILES_ROOT "applications\Catalogue.psd1") `
+    -ErrorAction Stop
 
 $ApplicationsFile = Join-Path $env:DOTFILES_PROFILE "Applications.txt"
 if (Test-Path $ApplicationsFile) {
@@ -31,14 +32,17 @@ if (Test-Path $ApplicationsFile) {
         }
 
         try {
-            . Invoke-ScriptFile -Path (Join-Path $env:DOTFILES_ROOT "applications\$Application\Initialize.ps1")
-            Write-SuccessLog -Message "Application `"$Application`" installed."
+            if ($ApplicationCatalogue.ContainsKey($Application)) {
+                Install-PortableArchive -Catalogue $ApplicationCatalogue -ApplicationName $Application
+                Write-SuccessLog -Message "Application `"$Application`" installed through catalogue."
+            }
+            else {
+                . Invoke-ScriptFile -Path (Join-Path $env:DOTFILES_ROOT "applications\$Application\Initialize.ps1")
+                Write-SuccessLog -Message "Application `"$Application`" installed."
+            }
         }
         catch {
-            Write-ErrorLog -Message @(
-                "Failed to install application `"$Application`"."
-                $_.Exception.Message
-            )
+            Write-ErrorLog -Message "Failed to install application `"$Application`"." -Err $_
         }
 
     }

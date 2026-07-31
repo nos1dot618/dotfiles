@@ -58,10 +58,7 @@ function Invoke-ScriptFile {
             . (Get-Item -LiteralPath $Path -ErrorAction Stop).FullName
         }
         catch {
-            Write-ErrorLog -Message @(
-                "Failed to invoke script `"$Path`".",
-                $_.Exception.Message
-            )
+            Write-ErrorLog -Message "Failed to invoke script `"$Path`"." -Err $_
             throw
         }
     }

@@ -9,9 +9,14 @@ ssh
 vscodium
 helix
 focus-editor
+eclipse
 
 # Applications
 windows-terminal
 
 # Languages
 #zig
+openjdk-21
+
+# Tools
+everything-search
