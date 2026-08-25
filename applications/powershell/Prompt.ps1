@@ -1,3 +1,13 @@
+function ConvertFrom-AnsiString {
+    param(
+        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        [string]$InputString
+    )
+    process {
+        $InputString -replace '\x1b\[[0-9;]*[a-zA-Z]', ''
+    }
+}
+
 function Prompt {
     $Esc = [char]27
     $Cyan = "$Esc[36m"
@@ -6,6 +16,7 @@ function Prompt {
     $Green = "$Esc[32m"
     $Reset = "$Esc[0m"
 
+    $HostColumnWidth = $Host.ui.rawui.WindowSize.Width
     $UserHome = [Environment]::GetFolderPath("UserProfile")
     $CurrentPath = $PWD.Path.Replace($UserHome, "~")
 
@@ -50,5 +61,7 @@ function Prompt {
         $GitInfo = "$Cyan$Line($Reset$GitInfo$Cyan)"
     }
 
-    return "`n$Cyan$TopLeftEdge$Line[$Reset$CurrentPath$Cyan]$GitInfo$Cyan`n$BottomLeftEdge$Line#$Reset "
+    $DetailsLine = "$TopLeftEdge$Line[$Reset$CurrentPath$Cyan]$Reset$GitInfo"
+    $Seperator = $Line * [Math]::Max(0, $HostColumnWidth - (ConvertFrom-AnsiString $DetailsLine).Length)
+    return "`n$Cyan$DetailsLine$Cyan$Seperator`n$BottomLeftEdge$Line#$Reset "
 }
