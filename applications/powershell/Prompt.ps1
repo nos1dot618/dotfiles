@@ -1,6 +1,6 @@
 function ConvertFrom-AnsiString {
     param(
-        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [string]$InputString
     )
     process {
@@ -20,9 +20,9 @@ function Prompt {
     $UserHome = [Environment]::GetFolderPath("UserProfile")
     $CurrentPath = $PWD.Path.Replace($UserHome, "~")
 
-	$TopLeftEdge = "$([char]0x250C)"
-	$Line = "$([char]0x2500)"
-	$BottomLeftEdge = "$([char]0x2514)"
+    $TopLeftEdge = "$([char]0x250C)"
+    $Line = "$([char]0x2500)"
+    $BottomLeftEdge = "$([char]0x2514)"
     $GitInfo = ""
 
     git rev-parse --is-inside-work-tree 2>$null | Out-Null
