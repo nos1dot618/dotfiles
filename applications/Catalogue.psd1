@@ -20,4 +20,11 @@
         Url         = "https://download.oracle.com/java/21/archive/{ARCHIVE_NAME}"
         Executable  = "bin/java.exe"
     }
+    "helium-browser"    = @{
+        Name        = "helium-browser"
+        Version     = "0.15.6.1"
+        ArchiveName = "helium_{VERSION}_x64-windows.zip"
+        Url         = "https://github.com/imputnet/helium-windows/releases/download/{VERSION}/{ARCHIVE_NAME}"
+        Executable  = "chrome.exe"
+    }
 }
