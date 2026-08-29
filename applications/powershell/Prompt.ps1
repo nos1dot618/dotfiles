@@ -14,15 +14,19 @@ function Prompt {
     $Yellow = "$Esc[33m"
     $Red = "$Esc[31m"
     $Green = "$Esc[32m"
+    $Bold = "$Esc[1m"
     $Reset = "$Esc[0m"
 
     $HostColumnWidth = $Host.ui.rawui.WindowSize.Width
     $UserHome = [Environment]::GetFolderPath("UserProfile")
     $CurrentPath = $PWD.Path.Replace($UserHome, "~")
 
-    $TopLeftEdge = "$([char]0x250C)"
-    $Line = "$([char]0x2500)"
-    $BottomLeftEdge = "$([char]0x2514)"
+    $TopLeftEdge = "$([char]0x250F)"
+    $Line = "$([char]0x2501)"
+    $LineJointLeft = "$([char]0x252B)"
+    $LineJointRight = "$([char]0x2523)"
+    $BottomLeftEdge = "$([char]0x2517)"
+    $PromptChar = "$([char]0x276F)"
     $GitInfo = ""
 
     git rev-parse --is-inside-work-tree 2>$null | Out-Null
@@ -58,10 +62,10 @@ function Prompt {
             $GitInfo += "$Reset"
         }
 
-        $GitInfo = "$Cyan$Line($Reset$GitInfo$Cyan)"
+        $GitInfo = "$Cyan$Line$LineJointLeft$Reset$Bold$GitInfo$Reset$Cyan$LineJointRight"
     }
 
-    $DetailsLine = "$TopLeftEdge$Line[$Reset$CurrentPath$Cyan]$Reset$GitInfo"
+    $DetailsLine = "$TopLeftEdge$Line$LineJointLeft$Reset$Bold$CurrentPath$Reset$Cyan$LineJointRight$Reset$GitInfo"
     $Seperator = $Line * [Math]::Max(0, $HostColumnWidth - (ConvertFrom-AnsiString $DetailsLine).Length)
-    return "`n$Cyan$DetailsLine$Cyan$Seperator`n$BottomLeftEdge$Line#$Reset "
+    return "`n$Cyan$DetailsLine$Cyan$Seperator`n$BottomLeftEdge$Line$Bold$PromptChar$Reset "
 }
